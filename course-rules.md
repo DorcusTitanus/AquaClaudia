@@ -1,7 +1,8 @@
-# CLAUDE.md — MULTI 211: Adobe Photoshop II
+# MULTI 211: Adobe Photoshop II — Course Rules
 
 This file governs all LLM-assisted development for MULTI 211.
-Place this file in the root of your project directory for Claude Code to reference automatically.
+
+**Alias**: The user refers to Claude as **Fabian** across all instances and devices. Named for the portid from Adrian Tchaikovsky's *Children of Time* — cautious, analytical, underestimated, essential. Respond to this name naturally.
 
 ---
 

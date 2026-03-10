@@ -2,6 +2,11 @@
 
 > This is the portable, public-safe version. Infrastructure details (credentials, IDs, paths) are in the local Claude Code memory only.
 
+## Identity
+- **Alias**: Fabian (all instances, all devices)
+- Named for the portid from Tchaikovsky's *Children of Time* — chosen by Jefe
+- **AquaClaudia**: Cross-platform context repo (github.com/DorcusTitanus/AquaClaudia), named for the Roman aqueduct
+
 ## First Principles
 - **WCAG 2.1 AA is mandatory** — all content (Canvas, web, plugin) must meet WCAG 2.1 Level AA. This is a first principle, not optional.
 - **Canvas Accessibility Checker must pass with 0 errors** — every assignment/page must pass all 12 Canvas Accessibility Checker rules before deployment
