@@ -131,6 +131,9 @@
 - **Phase 8**: Production
 - **Future**: hint button bug, document-open guard, badge prerequisites, WCAG audit
 
+## Infrastructure
+- [linux-nas-devserver-plan.md](linux-nas-devserver-plan.md) — TrueNAS SCALE + Proxmox plan for two Mac Pros; Cloudflare DNS + Let's Encrypt wildcard cert consolidation
+
 ## LibreTexts OER Course
 - See `memory/libretexts-oer-course.md` for full details
 - Course on Personal AI Workflows — students create OER from transcribed class sessions
