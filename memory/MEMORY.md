@@ -8,6 +8,7 @@
 - **AquaClaudia**: Cross-platform context repo (github.com/DorcusTitanus/AquaClaudia), named for the Roman aqueduct
 
 ## First Principles
+- **NEVER fabricate Photoshop features** — do not describe any Photoshop menu, dialog, or workflow unless verified. If unsure, say "I'm not sure this exists — please verify." Trust breach in April 2026 when a fabricated Easter Egg nearly went to students.
 - **WCAG 2.1 AA is mandatory** — all content (Canvas, web, plugin) must meet WCAG 2.1 Level AA. This is a first principle, not optional.
 - **Canvas Accessibility Checker must pass with 0 errors** — every assignment/page must pass all 12 Canvas Accessibility Checker rules before deployment
 - **Contrast minimums**: small text >= 4.5:1, large text (18pt+ or bold 14pt+) >= 3:1 — verified against actual background colors
@@ -106,12 +107,18 @@
 - Inline styles only (Canvas strips external CSS)
 - All images hosted externally with descriptive alt text
 
-## Level Names (current)
-- Level 1: Mask Architect
-- Level 2: Experimental Designer (Glass Sphere tutorial)
-- Level 3: (TBD)
-- Level 4: Precision Retoucher (Frequency Separation tutorial)
-- Level 11: Advanced Practitioner (always last)
+## Level Names (current — v3, April 2026)
+- Level 1: Mask Architect — Non-destructive masking (built)
+- Level 2: Experimental Designer — Glass sphere compositing (built)
+- Level 3: Visual Storyteller — Key art / movie poster (built)
+- Level 4: Precision Retoucher — Frequency separation (built)
+- Level 5: Motion Beginner — Frame animation, GIF optimization, Sprite Fright (built)
+- Level 6: Motion Designer — Video timeline, keyframing, Sprite Fright (built)
+- Level 7: Generative Designer — ML tools: Select Subject, Remove, Content-Aware Fill, Generative Fill, Select Sky, Face-Aware Liquify, Neural Filters (built)
+- Level 8: (open slot)
+- Level 9: Automation Engineer — Actions, batch processing (placeholder)
+- Level 10: Systems Designer — Research/planning, layout (placeholder)
+- Level 11: Advanced Practitioner — Final level (placeholder)
 - Badge names follow level names
 
 ## Rubrics & Points
@@ -119,14 +126,33 @@
 - **Tutorial Completion rubric** (reusable): 5 pts, 2 criteria (File Submission 3pts / Tutorial Steps Completed 2pts)
 - **Weekly Journal rubric** (reusable): 5 pts, 2 criteria (Reflection Depth 3pts 3-tier / Completeness 2pts binary)
 - **Peer Review rubric** (level-specific): 25 pts, 5 criteria x 5pts binary (Meets/Not Yet), hide_points
-- Peer reviews enabled on all Project assignments (automatic, count: 2)
+- Levels 1-5: peer reviews on project (automatic, count: 2)
+- Levels 6-7: Screening Room (ungraded discussion gallery) replaces peer review; project is instructor-graded
 - Assignment Groups: Tutorials, Projects, Journals
 
+## Module Completion Requirements
+- Overview: must_view
+- Tutorial: must_submit
+- Checkpoint: min_score 4.0 (score at least 4/5)
+- Project: must_submit
+- Screening Room (if present): must_contribute
+- **Journal: NO completion requirement** — students get 2 weeks; must not block progression
+- Level Unlocked: none
+- Badge Collection: none
+
+## IMSCC Build Lessons
+- Wiki pages must be full `<html><head><body>` documents, not bare fragments
+- All files in web_resources/ must be registered as `<resource>` entries in imsmanifest.xml — Canvas ignores unregistered files
+- Use `$IMS-CC-FILEBASE$` for portable file references (not hardcoded Canvas file IDs)
+- All items should import as unpublished (draft) — use set_unpublished() utility
+- UXP plugins must be on the macOS boot volume — Photoshop silently refuses to load from external drives
+
 ## Phase Status
-- **Phase 6 (Canvas Delivery)**: ~60% complete
-  - Done: Canvas Assignment template, asset hosting, module placement, UDL framework, checkpoint quiz
-  - Remaining: teleprompter scripts, walkthrough video, backend public deploy
+- **Phase 6 (Canvas Delivery)**: ~85% complete
+  - Done: Canvas Assignment template, asset hosting, module placement, UDL framework, checkpoint quizzes, 7 levels built and deployed, IMSCC export pipeline working
+  - Remaining: teleprompter scripts, walkthrough videos, backend public deploy, screenshots for Levels 3-5
   - OAuth Developer Key denied by institution; LTI access also denied
+  - UXP plugin loads from boot volume only (confirmed April 2026)
 - **Phase 7**: Visual Guides (annotations)
 - **Phase 8**: Production
 - **Future**: hint button bug, document-open guard, badge prerequisites, WCAG audit
