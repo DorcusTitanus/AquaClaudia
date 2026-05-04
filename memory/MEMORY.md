@@ -115,10 +115,12 @@
 - Level 5: Motion Beginner — Frame animation, GIF optimization, Sprite Fright (built)
 - Level 6: Motion Designer — Video timeline, keyframing, Sprite Fright (built)
 - Level 7: Generative Designer — ML tools: Select Subject, Remove, Content-Aware Fill, Generative Fill, Select Sky, Face-Aware Liquify, Neural Filters (built)
-- Level 8: (open slot)
-- Level 9: Automation Engineer — Actions, batch processing (placeholder)
-- Level 10: Systems Designer — Research/planning, layout (placeholder)
-- Level 11: Advanced Practitioner — Final level (placeholder)
+- Level 8: Digital Painter — Mixer Brush, custom brushes, painting over a photograph (built)
+- Level 9: Automation Engineer — Variables + Actions + Batch, 30-card trading set (built)
+- Level 10: Systems Designer — Layer comps + attention economy + YouTube thumbnail design (built)
+- Level 11: Advanced Practitioner — Capstone, three-product cohesive campaign with data-driven set, two-week module May 4–14 (built 2026-04-30; course content build complete)
+
+For full work-log detail on the course build see [multi-211-canvas-build.md](multi-211-canvas-build.md).
 - Badge names follow level names
 
 ## Rubrics & Points
@@ -136,7 +138,7 @@
 - Checkpoint: min_score 4.0 (score at least 4/5)
 - Project: must_submit
 - Screening Room (if present): must_contribute
-- **Journal: NO completion requirement** — students get 2 weeks; must not block progression
+- **Journal: must_submit** — gates the next level. No availability window. Journals are context-sensitive (tied to the project the student just did), not time-sensitive. (Changed 2026-04-22; back-patched across all 9 already-built levels.)
 - Level Unlocked: none
 - Badge Collection: none
 
