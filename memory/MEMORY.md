@@ -166,3 +166,6 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - See `memory/libretexts-oer-course.md` for full details
 - Course on Personal AI Workflows — students create OER from transcribed class sessions
 - Target: Workforce library, CC BY license
+
+## Live Music Streaming Production
+- [livestream-production.md](livestream-production.md) — Monthly 4-hour live music event; legal licensing (ASCAP/BMI/SESAC/GMR), self-owned streaming stack (OBS → Bunny.net → Next.js + Supabase + Stripe), build phases, sponsor model
