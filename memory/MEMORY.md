@@ -160,7 +160,8 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - **Future**: hint button bug, document-open guard, badge prerequisites, WCAG audit
 
 ## Infrastructure
-- [linux-nas-devserver-plan.md](linux-nas-devserver-plan.md) — TrueNAS SCALE + Proxmox plan for two Mac Pros; Cloudflare DNS + Let's Encrypt wildcard cert consolidation
+- **Operational details (IPs, MACs, SSH endpoints, machine specifics) live in the private companion repo** `github.com/DorcusTitanus/infrastructure`. Cloned alongside this one on M5 / Thufir / Alia.
+- [linux-nas-devserver-plan.md](linux-nas-devserver-plan.md) — **OBSOLETE.** Plan was for TrueNAS + Proxmox split; reframe 2026-05-06 made it bare-metal Ubuntu on Thufir + dedicated TrueNAS on Muadib. Kept for history only.
 
 ## LibreTexts OER Course
 - See `memory/libretexts-oer-course.md` for full details
@@ -169,3 +170,45 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 
 ## Live Music Streaming Production
 - [livestream-production.md](livestream-production.md) — Monthly 4-hour live music event; legal licensing (ASCAP/BMI/SESAC/GMR), self-owned streaming stack (OBS → Bunny.net → Next.js + Supabase + Stripe), build phases, sponsor model
+
+---
+
+## User Context
+
+- [user_profile.md](user_profile.md) — Who Jefe is: instructor, creator, builder, polymath
+- [user_cli_interest.md](user_cli_interest.md) — Wants to learn CLI tools — teach naturally as commands come up
+- [user_typescript_learning.md](user_typescript_learning.md) — Learning TypeScript via real projects (Stream Deck, UXP)
+
+## Behavior Rules (universal)
+
+- [feedback_warnings_first.md](feedback_warnings_first.md) — Lead with warnings/prerequisites for destructive or high-blast-radius ops
+- [feedback_secrets_in_repos.md](feedback_secrets_in_repos.md) — `.env` in local files, gitignored *before* any credential is written; never paste creds in chat
+- [feedback_name_convention.md](feedback_name_convention.md) — "Jeff Wilson" in public-facing content; "Jefe" only internal
+- [feedback_no_hallucinated_features.md](feedback_no_hallucinated_features.md) — Never fabricate Photoshop features; verify or flag as unverified
+- [feedback_alt_text_rule.md](feedback_alt_text_rule.md) — Alt text < 120 chars; assert in any code that generates alt text
+- [feedback_no_preview_panel.md](feedback_no_preview_panel.md) — Don't reference the preview panel; Jefe finds it unhelpful
+- [feedback_imscc_unpublished.md](feedback_imscc_unpublished.md) — IMSCC cartridges must import as unpublished/draft, never auto-publish
+- [feedback_journal_gating.md](feedback_journal_gating.md) — Journals are context-sensitive: gate by `must_submit`, no availability window
+- [feedback_late_publish_recovery.md](feedback_late_publish_recovery.md) — Compress-pedagogy decision tree for late-published modules
+
+## Project Briefs (public-safe)
+
+- [project_wilsonidt_plugin.md](project_wilsonidt_plugin.md) — Main software project: FastAPI + Canvas + UXP Photoshop plugin (extended detail beyond the inline summary above)
+- [project_imscc_builds.md](project_imscc_builds.md) — Weekly IMSCC cartridge build workflow: locations, structure, build pattern
+- [project_canvas_sandbox_vs_live.md](project_canvas_sandbox_vs_live.md) — Sandbox/live separation; no PII in API access
+- [project_research_gap_finder.md](project_research_gap_finder.md) — Python pipeline surfacing research/patent coverage gaps
+- [project_lifeskills.md](project_lifeskills.md) — "Life Skills Before AI Does It For You" YouTube + OER course series
+- [project_content_pipeline.md](project_content_pipeline.md) — Running list of content-worthy projects for polymathery/wilsonidt
+- [canvas-screenshot-workflow.md](canvas-screenshot-workflow.md) — Reusable pattern for uploading and inserting tutorial screenshots
+
+## Philosophy
+
+- [simulation-epiphany.md](simulation-epiphany.md) — Jefe's framework on brains as editable simulations
+
+---
+
+## For phone-Claude / mobile readers
+
+If you're a Claude instance reading this via raw GitHub URLs, you have full identity + behavior context here. Operational specifics (machine IPs, credentials, sensitive personal projects) live in the private `infrastructure` repo and won't be reachable from a public URL. Jefe will relay anything operational you need.
+
+Bootstrap pattern: fetch this MEMORY.md first, then fetch any referenced file by name from the same `memory/` directory at `https://raw.githubusercontent.com/DorcusTitanus/AquaClaudia/main/memory/<filename>`.
