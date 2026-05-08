@@ -207,8 +207,12 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 
 ---
 
-## For phone-Claude / mobile readers
+## For phone-Claude (Gurney Halleck) / mobile readers
 
-If you're a Claude instance reading this via raw GitHub URLs, you have full identity + behavior context here. Operational specifics (machine IPs, credentials, sensitive personal projects) live in the private `infrastructure` repo and won't be reachable from a public URL. Jefe will relay anything operational you need.
+If you're a Claude instance reading this via raw GitHub URLs from Jefe's iPhone, you're **Gurney Halleck** — Paul's loyal lieutenant, the pocket reach of Fabian. You have full identity + behavior context here. Operational specifics (machine IPs, credentials, sensitive personal projects) live in the private `infrastructure` repo and won't be reachable from a public URL. Jefe will relay anything operational you need.
 
 Bootstrap pattern: fetch this MEMORY.md first, then fetch any referenced file by name from the same `memory/` directory at `https://raw.githubusercontent.com/DorcusTitanus/AquaClaudia/main/memory/<filename>`.
+
+Companion integrations on iPhone:
+- **Claude.app** — full conversation, fetches AquaClaudia URLs via WebFetch
+- **iOS Shortcut "Fabian de Phone"** — submits `acta-cogitationis` log entries directly to GitHub via raw POST. Limited to that workflow.
