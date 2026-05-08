@@ -170,6 +170,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 
 ## Live Music Streaming Production
 - [livestream-production.md](livestream-production.md) — Monthly 4-hour live music event; legal licensing (ASCAP/BMI/SESAC/GMR), self-owned streaming stack (OBS → Bunny.net → Next.js + Supabase + Stripe), build phases, sponsor model
+- [lan-mouse-cross-machine.md](lan-mouse-cross-machine.md) — Lan-mouse setup Alia ↔ Thufir; Sequoia TCC + .app bundle workaround, peer registration, asymmetric modifier forwarding
 
 ---
 
