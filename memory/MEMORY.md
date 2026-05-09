@@ -191,6 +191,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [feedback_imscc_unpublished.md](feedback_imscc_unpublished.md) — IMSCC cartridges must import as unpublished/draft, never auto-publish
 - [feedback_journal_gating.md](feedback_journal_gating.md) — Journals are context-sensitive: gate by `must_submit`, no availability window
 - [feedback_late_publish_recovery.md](feedback_late_publish_recovery.md) — Compress-pedagogy decision tree for late-published modules
+- [feedback_check_project_memory_first.md](feedback_check_project_memory_first.md) — Before editing a tool's config, read its project-memory setup file; training-data schemas may be stale
 
 ## Project Briefs (public-safe)
 
