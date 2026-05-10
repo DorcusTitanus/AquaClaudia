@@ -63,7 +63,12 @@ Each level: 40 pts (Tutorial 5 + Checkpoint 5 + Project 25 + Journal 5).
   from his school's Canvas. **This is the ROOT CAUSE driving the
   self-hosted Canvas effort on Thufir.** Connect the dots: Canvas
   self-host project = unblock LTI/OAuth dev for this plugin.
-- **LTI access also denied** by institution
+  - **UNBLOCKED 2026-05-10:** self-hosted Canvas live at
+    `https://canvas.wilsonidt.com` on Thufir; first LTI 1.3 developer key
+    `Photoshop` (client_id `10000000000001`) created and enabled.
+    Placeholders still point at `wilsonidt-backend.example` — update when
+    FastAPI backend has a real URL.
+- **LTI access also denied** by institution (same self-host workaround applies)
 - **UXP plugins must live on the macOS boot volume** — Photoshop silently
   refuses to load from external drives (confirmed April 2026)
 
