@@ -10,6 +10,8 @@ When a self-hosted service uses a **public hostname** with an A record pointing 
 
 Observed 2026-05-10: From Alia (macOS), `https://canvas.wilsonidt.com` returned `ERR_ADDRESS_UNREACHABLE` in Chrome. Fix was disabling Chrome's Secure DNS setting — Chrome then deferred to the OS resolver, which doesn't filter. Diagnosed with help from `fabian@alia`.
 
+**macOS second-layer gotcha (Sequoia+):** Disabling Secure DNS was necessary but *not sufficient* on Alia. Chrome also needed **Local Network** permission (System Settings → Privacy & Security → Local Network) before it could actually connect to the RFC1918 IP. Until that permission is granted, the OS blocks the socket and the failure looks identical to a DNS problem — same generic `ERR_ADDRESS_UNREACHABLE`, no useful error. When debugging on macOS, verify both layers: (1) browser/system DoH off, (2) app has Local Network permission. curl from terminal isn't subject to the Local Network prompt, which is why CLI tests can succeed while the GUI app fails.
+
 **How to apply:**
 
 - If a self-hosted service works from one device but not another on the same LAN, **first check whether Secure DNS / DoH is enabled in the failing browser** (Chrome: Settings → Privacy and security → Security → "Use secure DNS"; Firefox: about:preferences#privacy → DNS over HTTPS).
