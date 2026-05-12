@@ -195,6 +195,8 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [feedback_bang_prefix_no_cd.md](feedback_bang_prefix_no_cd.md) — On Thufir (Ubuntu/bash), `!` slash-prefix doesn't compose with `&&`; macOS/zsh untested. Send one cmd per bang line
 - [feedback_canvas_hides_controls_narrow.md](feedback_canvas_hides_controls_narrow.md) — Canvas hides UI controls at narrow browser widths; widen the window before chasing "missing button" bugs
 - [feedback_doh_rebinding_blocks_self_host.md](feedback_doh_rebinding_blocks_self_host.md) — Browser Secure DNS / DoH strips RFC1918 IPs from public-hostname lookups; disable it for LAN self-hosted services
+- [feedback_never_print_smtp_settings.md](feedback_never_print_smtp_settings.md) — Never suggest commands that print raw credential-bearing config hashes (smtp_settings, db creds, secrets). Mask before printing
+- [feedback_docker_env_file_gotchas.md](feedback_docker_env_file_gotchas.md) — Compose env_file: `$` expands, `#` is comment; `restart` doesn't refresh env, need `up -d --force-recreate`. Use alphanumeric secrets
 - [reference_canvas_admin_creds.md](reference_canvas_admin_creds.md) — Canvas site admin login (`admin@canvas.wilsonidt.com`) stored in Dashlane under `canvas-homelab-admin`; recovery via Rails console
 - [reference_screenshots_dir.md](reference_screenshots_dir.md) — Screenshots on Thufir live at `~/Pictures/Screenshots/`; default location when Jefe says "check the screenshot"
 
