@@ -208,6 +208,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [project_research_gap_finder.md](project_research_gap_finder.md) — Python pipeline surfacing research/patent coverage gaps
 - [project_lifeskills.md](project_lifeskills.md) — "Life Skills Before AI Does It For You" YouTube + OER course series
 - [project_content_pipeline.md](project_content_pipeline.md) — Running list of content-worthy projects for polymathery/wilsonidt
+- [project_bekins_hall_vr.md](project_bekins_hall_vr.md) — 1910 campus dorm closing; Jeff + Bill Malin capturing 3D/VR archive. iPad LiDAR + A1 splats + 6D archival → Unreal → campus VR lab
 - [canvas-screenshot-workflow.md](canvas-screenshot-workflow.md) — Reusable pattern for uploading and inserting tutorial screenshots
 
 ## Philosophy
