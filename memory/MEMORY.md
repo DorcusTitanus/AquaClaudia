@@ -170,7 +170,6 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 
 ## Live Music Streaming Production
 - [livestream-production.md](livestream-production.md) — Monthly 4-hour live music event; legal licensing (ASCAP/BMI/SESAC/GMR), self-owned streaming stack (OBS → Bunny.net → Next.js + Supabase + Stripe), build phases, sponsor model
-- [lan-mouse-cross-machine.md](lan-mouse-cross-machine.md) — Lan-mouse setup Alia ↔ Thufir; Sequoia TCC + .app bundle workaround, peer registration, asymmetric modifier forwarding
 
 ---
 
@@ -197,6 +196,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [feedback_doh_rebinding_blocks_self_host.md](feedback_doh_rebinding_blocks_self_host.md) — Browser Secure DNS / DoH strips RFC1918 IPs from public-hostname lookups; disable it for LAN self-hosted services
 - [feedback_never_print_smtp_settings.md](feedback_never_print_smtp_settings.md) — Never suggest commands that print raw credential-bearing config hashes (smtp_settings, db creds, secrets). Mask before printing
 - [feedback_docker_env_file_gotchas.md](feedback_docker_env_file_gotchas.md) — Compose env_file: `$` expands, `#` is comment; `restart` doesn't refresh env, need `up -d --force-recreate`. Use alphanumeric secrets
+- [feedback_lan_mouse_breaks_adobe_magic_mouse.md](feedback_lan_mouse_breaks_adobe_magic_mouse.md) — Lan Mouse daemon broke Magic Mouse inside Adobe apps on Mac mini; uninstalled 2026-05-14, don't suggest reinstalling
 - [reference_canvas_admin_creds.md](reference_canvas_admin_creds.md) — Canvas site admin login (`admin@canvas.wilsonidt.com`) stored in Dashlane under `canvas-homelab-admin`; recovery via Rails console
 - [reference_screenshots_dir.md](reference_screenshots_dir.md) — Screenshots on Thufir live at `~/Pictures/Screenshots/`; default location when Jefe says "check the screenshot"
 
