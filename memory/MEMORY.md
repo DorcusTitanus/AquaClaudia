@@ -218,6 +218,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [project_chronical.md](project_chronical.md) — ChroniCal: macOS SwiftUI app wrapping Python calendar pipeline for Chronicle Books. Private repo at `github.com/DorcusTitanus/happenstance`. v0.2 shipped 2026-05-14.
 - [project_chronical_corpus.md](project_chronical_corpus.md) — 8 years (~280GB, 409 files) of production Chronicle calendars at `~/sync/Buttercup/Chronicle/Calendars/`. Indexed by `scripts/catalog_corpus.py` for regression-test material. Schema versions v1 (2020–21) and v2 (2022+).
 - [project_chronical_paradigms.md](project_chronical_paradigms.md) — Per-product-line element vocabularies and emission order (Wall/Planner/Daily, with Engagement and Family Wall TBD). Verified against 2027 Totoro Wall+Planner and 2027 Disney+WCS Daily PDFs. Frames ChroniCal as Happenstance's first PoC GUI replacement for per-client perl/xsl stacks.
+- [reference_mcp_servers.md](reference_mcp_servers.md) — MCP servers Jefe uses or plans to use: Xcode (in production), OBS (3 community options), Stream Deck (Elgato official 7.4+). Setup patterns, gotchas, and a checklist for adopting new servers. Update when new MCP integrations land.
 
 ## Philosophy
 
