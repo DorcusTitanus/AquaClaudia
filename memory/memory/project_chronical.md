@@ -1,6 +1,6 @@
 # ChroniCal — Chronicle Books Calendar Pipeline App
 
-**Status:** v0.3 (v0.4 pending — significant arch change 2026-05-15 not yet versioned in UI)
+**Status:** v0.3 → v0.4 pending UI version bump (2026-05-15 arch consolidation: bundled scripts + per-product builders + Daily skeleton)
 **Repo:** `github.com/DorcusTitanus/happenstance` (private)
 **Local:** `~/sync/Documents/ClaudeCode/happenstance/` (via per-machine symlink — see `feedback_sync_symlink.md`)
 
@@ -50,11 +50,20 @@ Happenstance aesthetic (Jefe's 2009 brand). Mustard/saffron/cream/charcoal palet
 - Verified against 2027 Totoro Wall Calendar production XML
 - Light/dark mode, full icon set (16–1024px)
 
-## Pipeline scripts (canonical = bundled)
+## Pipeline scripts (canonical = bundled inside ChroniCal.app)
 
-- **`xlsx_to_events.py`** — extracts holidays + moon phases from xlsx to events XML. CLI: `--input` `--output`.
-- **`plannerBuilderv002.py`** — generates InDesign calendar XML from events. CLI: `--year` `--events` `--output`, plus toggle flags `--six-week-grids` `--holiday-cont-after-moon` `--no-year-after-month` `--moon-icon-only` `--wall`. `--output` is now **required** (2026-05-15) — no more cwd-relative `output/Calendar_{year}.xml`.
-- **`holidays_to_docx.py`** — generates blank Word doc templates for the Word-template path (not yet wired into ChroniCal UI). CLI: `--input` `--output` `--year`.
+Post-2026-05-15 split: per-product builders + shared lib. Lives at `gui/ChronCal/ChronCal/Scripts/`, bundled into `ChroniCal.app/Contents/Resources/`.
+
+- **`chronicalLib.py`** — shared helpers: AID namespace, `create_element`, `parse_events`, `build_minical`, `emit_date_events`, `build_previous_year`, `emit_month_block` (the per-month section reused by Wall + Planner), output postprocessing (`unescape_minicalghost`, `collapse_minical_ghost_close`, `write_output`). No CLI; imported by the builders.
+- **`xlsx_to_events.py`** — extracts holidays + moon phases from xlsx to events XML. CLI: `--input` `--output`. Unchanged.
+- **`wallBuilder.py`** — Wall calendar. PreviousYear front-matter + 12 months + bookend Jan, no weekly section. CLI: `--year` `--events` `--output` `--six-week-grids` `--holiday-cont-after-moon` `--no-year-after-month` `--moon-icon-only`.
+- **`plannerBuilder.py`** — Planner calendar. Same as Wall plus `MonthWeekly`/`DateWeekly` weekly section per month (straddle weeks attributed to later month; Dec keeps Dec-Jan straddle). Same CLI as wallBuilder.
+- **`dailyBuilder.py`** — Daily 313-page book. Per-day skeleton: `Weekday`/`Weekend` + `Month` + `Date` + `Holiday`* + optional body. 2028 (leap, Jan 1 Sat / Dec 31 Sun): 260 weekday pages + 53 weekend pages = 313. CLI: `--year` `--events` `--output` [`--body PATH`]. Skeleton-only when `--body` omitted; useful for layout verification before docx pipeline is wired.
+- **`holidays_to_docx.py`** — generates blank Word doc templates for the Word-template path (not yet wired into ChroniCal UI). CLI: `--input` `--output` `--year`. Unchanged.
+
+**Killed:** `plannerBuilderv002.py` and the `--wall` flag (2026-05-15). Wall is its own builder now per the paradigms memo's "separate builders sharing a common helper module" lean.
+
+**Body XML format for dailyBuilder** (when wired): `<Bodies><Body date="M/D/YY">...children...</Body><Body date="M/D/YY and M/D/YY">...</Body></Bodies>`. Children are arbitrary InDesign elements (Graphic, Header1, CaptionPara, Copyright, etc.). Weekend lookup tries combined-date first, then either single day. Verified against `2027DisneyDaily_MS_INPUT.xml` on tabr.
 
 `build_holidays_docx.js` at the legacy `scripts/` location is a Node companion, unrelated to the Python pipeline.
 
@@ -70,10 +79,12 @@ Happenstance aesthetic (Jefe's 2009 brand). Mustard/saffron/cream/charcoal palet
 
 ## Known TODOs
 - Wire `prevYearGraphic` toggle to a Python flag (UI exists, flag doesn't)
-- Wall/Daily Word-doc input paradigm (docx drop zone wired in UI, no pipeline consumer)
+- **docx → body XML pipeline** for Daily: client Word doc with assigned Styles → `<Bodies>` XML consumed by `dailyBuilder.py --body`. Currently Daily emits skeleton only.
 - Error styling (stderr in saffron color in editor on script failure)
 - Decide fate of legacy `scripts/` directory at repo root (delete vs rename vs leave)
 - Bump visible version label from "v0.3" → "v0.4" to reflect arch change
+- Engagement and Family Wall paradigms: not yet inspected. Sample inputs before coding their builders.
+- Regression harness: walk `corpus_manifest.csv` from `~/sync/Buttercup/Chronicle/Calendars/`, run builders, diff against stored outputs. Catches schema drift.
 - Python deps not bundled — venv is created per-machine. For a true ship-to-Happenstance .app, need to either bundle Python (py2app/PyInstaller pattern) or pivot to native Swift.
 
 ## Verification

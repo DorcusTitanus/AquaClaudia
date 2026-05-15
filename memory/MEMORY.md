@@ -201,6 +201,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [feedback_sync_symlink.md](feedback_sync_symlink.md) — Per-machine `~/sync` symlink points at the local Dune-named drive's `Sync/` dir. Use `~/sync/...` in memory; expand to `/Users/jefe/sync/...` for Read/Write/Edit. Drives keep distinct names.
 - [feedback_find_through_sync_symlink.md](feedback_find_through_sync_symlink.md) — BSD `find ~/sync ...` silently returns empty (symlink-as-starting-path is not traversed). Use `find ~/sync/ ...` (trailing slash) or `find -L ~/sync ...`. Also affects `du`, `rg`, etc.
 - [feedback_apps_ship_self_contained.md](feedback_apps_ship_self_contained.md) — Apps Jefe builds must work on other computers. Bundle scripts/assets inside the binary by default. No hardcoded `/Volumes/...` or `~/repo/...` paths in shipping code. Platform-specific patterns documented.
+- [feedback_indesign_thread_pain.md](feedback_indesign_thread_pain.md) — Open (unverified). XML Place may break master-page text threads on ChroniCal layouts. Tentative answer: Primary Text Frame + Smart Text Reflow. Verify on a copy before recommending.
 - [reference_canvas_admin_creds.md](reference_canvas_admin_creds.md) — Canvas site admin login (`admin@canvas.wilsonidt.com`) stored in Dashlane under `canvas-homelab-admin`; recovery via Rails console
 - [reference_screenshots_dir.md](reference_screenshots_dir.md) — Screenshots on Thufir live at `~/Pictures/Screenshots/`; default location when Jefe says "check the screenshot"
 
