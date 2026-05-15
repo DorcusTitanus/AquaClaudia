@@ -213,7 +213,8 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [project_research_gap_finder.md](project_research_gap_finder.md) — Python pipeline surfacing research/patent coverage gaps
 - [project_lifeskills.md](project_lifeskills.md) — "Life Skills Before AI Does It For You" YouTube + OER course series
 - [project_content_pipeline.md](project_content_pipeline.md) — Running list of content-worthy projects for polymathery/wilsonidt
-- [project_bekins_hall_vr.md](project_bekins_hall_vr.md) — 1910 campus dorm closing; Jeff + Bill Malin capturing 3D/VR archive. iPad LiDAR + A1 splats + 6D archival → Unreal → campus VR lab
+- [project_bekins_hall_vr.md](project_bekins_hall_vr.md) — 1910 campus dorm closing; Jeff + Bill Malin capturing max-quality raw archive (6D + A1 stills + Insta360 X4 360° video); splat/VR processing deferred
+- [project_splat_business.md](project_splat_business.md) — Mac-native Insta360-to-Gaussian-splat app for real estate. Summer 2026 build. Insta360 SDK + msplat + MetalSplatter; market gap (no US splat service); $90-175K/yr potential
 - [canvas-screenshot-workflow.md](canvas-screenshot-workflow.md) — Reusable pattern for uploading and inserting tutorial screenshots
 - [project_chronical.md](project_chronical.md) — ChroniCal: macOS SwiftUI app wrapping Python calendar pipeline for Chronicle Books. Private repo at `github.com/DorcusTitanus/happenstance`. v0.2 shipped 2026-05-14.
 - [project_chronical_corpus.md](project_chronical_corpus.md) — 8 years (~280GB, 409 files) of production Chronicle calendars at `~/sync/Buttercup/Chronicle/Calendars/`. Indexed by `scripts/catalog_corpus.py` for regression-test material. Schema versions v1 (2020–21) and v2 (2022+).
