@@ -210,6 +210,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [project_content_pipeline.md](project_content_pipeline.md) — Running list of content-worthy projects for polymathery/wilsonidt
 - [project_bekins_hall_vr.md](project_bekins_hall_vr.md) — 1910 campus dorm closing; Jeff + Bill Malin capturing 3D/VR archive. iPad LiDAR + A1 splats + 6D archival → Unreal → campus VR lab
 - [canvas-screenshot-workflow.md](canvas-screenshot-workflow.md) — Reusable pattern for uploading and inserting tutorial screenshots
+- [project_chronical.md](project_chronical.md) — ChroniCal: macOS SwiftUI app wrapping Python calendar pipeline for Chronicle Books. Private repo at `github.com/DorcusTitanus/happenstance`. v0.2 shipped 2026-05-14.
 
 ## Philosophy
 
