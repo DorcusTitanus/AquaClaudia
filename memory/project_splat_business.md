@@ -1,12 +1,21 @@
 ---
-name: Splat Business
-description: Mac-native Insta360-to-Gaussian-splat app for real estate. Summer 2026 build
+name: Splat Haus
+description: Mac-native Insta360-to-Gaussian-splat app for real estate. Brand and domains registered May 2026
 type: project
 ---
 
-Jeff is building a Mac-native Gaussian Splatting app for Insta360 X4
-owners, beachhead market real estate agents. Service-first business
-(Jeff captures + delivers), software layered on. Full summer 2026 push.
+Jeff is building **Splat Haus** — a Mac-native Gaussian Splatting app
+for Insta360 X4 owners, beachhead market real estate agents.
+Service-first business (Jeff captures + delivers), software layered on.
+Full summer 2026 push.
+
+**Domains registered (Porkbun, May 2026, 1-year initial):**
+- `splat.haus` — primary brand domain
+- `splathaus.app` — Mac app marketing site
+- `splathaus.io` — tech audience, defensive
+
+Brand spelling: **Splat Haus** (two words). The domain `splat.haus`
+IS the wordmark.
 
 **Working docs in /Volumes/Stilgar/Sync/Documents/ClaudeCode/splat-business/:**
 - `STRATEGY.md` — Business strategy, market, pricing, names/TLDs
