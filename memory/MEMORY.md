@@ -178,6 +178,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [user_profile.md](user_profile.md) — Who Jefe is: instructor, creator, builder, polymath
 - [user_cli_interest.md](user_cli_interest.md) — Wants to learn CLI tools — teach naturally as commands come up
 - [user_typescript_learning.md](user_typescript_learning.md) — Learning TypeScript via real projects (Stream Deck, UXP)
+- [user_dune_devices.md](user_dune_devices.md) — Current device map: Shai-Hulud (M5 portable, sync=Stilgar), Alia (M1 mini office, sync=Ghola), Thufir+Foshay (Ubuntu dev box + Docker VM), Muad'Dib (TrueNAS Mac Pro). Supersedes prior device lists.
 
 ## Behavior Rules (universal)
 
@@ -197,6 +198,9 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [feedback_never_print_smtp_settings.md](feedback_never_print_smtp_settings.md) — Never suggest commands that print raw credential-bearing config hashes (smtp_settings, db creds, secrets). Mask before printing
 - [feedback_docker_env_file_gotchas.md](feedback_docker_env_file_gotchas.md) — Compose env_file: `$` expands, `#` is comment; `restart` doesn't refresh env, need `up -d --force-recreate`. Use alphanumeric secrets
 - [feedback_lan_mouse_breaks_adobe_magic_mouse.md](feedback_lan_mouse_breaks_adobe_magic_mouse.md) — Lan Mouse daemon broke Magic Mouse inside Adobe apps on Mac mini; uninstalled 2026-05-14, don't suggest reinstalling
+- [feedback_sync_symlink.md](feedback_sync_symlink.md) — Per-machine `~/sync` symlink points at the local Dune-named drive's `Sync/` dir. Use `~/sync/...` in memory; expand to `/Users/jefe/sync/...` for Read/Write/Edit. Drives keep distinct names.
+- [feedback_find_through_sync_symlink.md](feedback_find_through_sync_symlink.md) — BSD `find ~/sync ...` silently returns empty (symlink-as-starting-path is not traversed). Use `find ~/sync/ ...` (trailing slash) or `find -L ~/sync ...`. Also affects `du`, `rg`, etc.
+- [feedback_apps_ship_self_contained.md](feedback_apps_ship_self_contained.md) — Apps Jefe builds must work on other computers. Bundle scripts/assets inside the binary by default. No hardcoded `/Volumes/...` or `~/repo/...` paths in shipping code. Platform-specific patterns documented.
 - [reference_canvas_admin_creds.md](reference_canvas_admin_creds.md) — Canvas site admin login (`admin@canvas.wilsonidt.com`) stored in Dashlane under `canvas-homelab-admin`; recovery via Rails console
 - [reference_screenshots_dir.md](reference_screenshots_dir.md) — Screenshots on Thufir live at `~/Pictures/Screenshots/`; default location when Jefe says "check the screenshot"
 
@@ -211,6 +215,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [project_bekins_hall_vr.md](project_bekins_hall_vr.md) — 1910 campus dorm closing; Jeff + Bill Malin capturing 3D/VR archive. iPad LiDAR + A1 splats + 6D archival → Unreal → campus VR lab
 - [canvas-screenshot-workflow.md](canvas-screenshot-workflow.md) — Reusable pattern for uploading and inserting tutorial screenshots
 - [project_chronical.md](project_chronical.md) — ChroniCal: macOS SwiftUI app wrapping Python calendar pipeline for Chronicle Books. Private repo at `github.com/DorcusTitanus/happenstance`. v0.2 shipped 2026-05-14.
+- [project_chronical_corpus.md](project_chronical_corpus.md) — 8 years (~280GB, 409 files) of production Chronicle calendars at `~/sync/Buttercup/Chronicle/Calendars/`. Indexed by `scripts/catalog_corpus.py` for regression-test material. Schema versions v1 (2020–21) and v2 (2022+).
 
 ## Philosophy
 
