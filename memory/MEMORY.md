@@ -216,6 +216,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [canvas-screenshot-workflow.md](canvas-screenshot-workflow.md) — Reusable pattern for uploading and inserting tutorial screenshots
 - [project_chronical.md](project_chronical.md) — ChroniCal: macOS SwiftUI app wrapping Python calendar pipeline for Chronicle Books. Private repo at `github.com/DorcusTitanus/happenstance`. v0.2 shipped 2026-05-14.
 - [project_chronical_corpus.md](project_chronical_corpus.md) — 8 years (~280GB, 409 files) of production Chronicle calendars at `~/sync/Buttercup/Chronicle/Calendars/`. Indexed by `scripts/catalog_corpus.py` for regression-test material. Schema versions v1 (2020–21) and v2 (2022+).
+- [project_chronical_paradigms.md](project_chronical_paradigms.md) — Per-product-line element vocabularies and emission order (Wall/Planner/Daily, with Engagement and Family Wall TBD). Verified against 2027 Totoro Wall+Planner and 2027 Disney+WCS Daily PDFs. Frames ChroniCal as Happenstance's first PoC GUI replacement for per-client perl/xsl stacks.
 
 ## Philosophy
 
