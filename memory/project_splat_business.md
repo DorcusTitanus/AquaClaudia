@@ -21,9 +21,17 @@ fully sandboxed from day one (App Sandbox + Hardened Runtime).
 Brand spelling: **Splat Haus** (two words). The domain `splat.haus`
 IS the wordmark. Bundle ID: `haus.splat.SplatHaus`.
 
-Pending architectural decision: COLMAP (SfM) shells out as subprocess
-in v1.0 direct-download build; App Store version requires porting to
-linked library (v1.1) or native Metal SfM (v2.0).
+**Three capture tiers (per CONCEPT.md design research, 2026-05-16):**
+- **Amateur** (v1.2): automatic, COLMAP-free SfM (recent CVPR
+  research)
+- **Pro** (v1.1): deliberate camera positions + IMU gyro, no SfM
+- **Marker** (v1.0 BETA): printed ArUco fiducial targets, OpenCV
+  detection solves pose directly, no SfM, no COLMAP
+
+**Marker beta resolves sandbox/COLMAP problem.** v1.0 ships with no
+SfM dependency — App Sandbox + App Store eligible from launch. The
+"Scan Kit" hardware accessory (laminated marker targets) is a
+margin-positive add-on tied to the software.
 
 **Working docs in /Volumes/Stilgar/Sync/Documents/ClaudeCode/splat-business/:**
 - `STRATEGY.md` — Business strategy, market, pricing, names/TLDs
