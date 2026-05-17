@@ -14,8 +14,16 @@ Full summer 2026 push.
 - `splathaus.app` — Mac app marketing site
 - `splathaus.io` — tech audience, defensive
 
+**Apple Developer Program: enrolled May 2026.** Distribution targets
+both Sparkle direct-download (v1.0) and Mac App Store (v1.1+). App
+fully sandboxed from day one (App Sandbox + Hardened Runtime).
+
 Brand spelling: **Splat Haus** (two words). The domain `splat.haus`
-IS the wordmark.
+IS the wordmark. Bundle ID: `haus.splat.SplatHaus`.
+
+Pending architectural decision: COLMAP (SfM) shells out as subprocess
+in v1.0 direct-download build; App Store version requires porting to
+linked library (v1.1) or native Metal SfM (v2.0).
 
 **Working docs in /Volumes/Stilgar/Sync/Documents/ClaudeCode/splat-business/:**
 - `STRATEGY.md` — Business strategy, market, pricing, names/TLDs
