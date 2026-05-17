@@ -1,6 +1,6 @@
 # ChroniCal — Chronicle Books Calendar Pipeline App
 
-**Status:** v1.0 shipped 2026-05-16. Cycle-4 anchor (lint review pane), comprehensive pre-checks (year/xlsx-year/product/filename-year mismatch), Save/Save As, ⌘+/− text zoom, docx-derived output naming. Comp-facing workflow is complete for Wall and Daily.
+**Status:** v1.1 shipped 2026-05-16 (same day as v1.0). Adds in-app Help menu with FAQ window, Holiday-mismatch reclassification (advisories vs lint vs data-error), HolidaySpecial suggestion for docx-only Holiday text, Daily "Allow art checks to pass" + "Weekday full names" toggles, lenient DateSlug parsing for comp-annotated WCS-style docx ("New:1/1/27", "1/4/27m"), text-zoom redraw fix, Save-As-aware Reveal Output. Comp-facing workflow complete for Wall AND Daily; WCS 2027 verified structurally identical to production-pre-hand-curation reference.
 **Repo:** `github.com/DorcusTitanus/happenstance` (private)
 **Local:** `~/sync/Documents/ClaudeCode/happenstance/` (via per-machine symlink — see `feedback_sync_symlink.md`)
 
@@ -149,13 +149,18 @@ Wired via `@FocusedValue(\.saveActions)` published by ContentView and consumed b
 - 2026-05-14: v0.3 shipped — sidebar, XML editor, design toggles
 - 2026-05-15: v0.4 — major arch change; bundled scripts, removed `repoRoot`, moved output to `~/Documents/ChroniCal/`, split into per-product builders, added Daily skeleton
 - 2026-05-16: v0.5 — docx → body XML pipeline for Wall and Daily; Holiday validator; lint pass; ContentView auto-runs docx_to_body
-- **2026-05-16: v1.0 (same day)** — Cycle 4 lint review pane; xlsx-year-mismatch detection; product-mismatch detection; filename-year fast-fail; per-Normal warning; classify_bracket heuristic; cover-preamble fix; auto-rerun xlsx_to_events on Build; error-report styling; Save / Save As; ⌘+/− text zoom; docx-derived output naming; sidebar label bumped to v1.0
+- 2026-05-16: v1.0 — Cycle 4 lint review pane; xlsx-year-mismatch detection; product-mismatch detection; filename-year fast-fail; per-Normal warning; classify_bracket heuristic; cover-preamble fix; auto-rerun xlsx_to_events on Build; error-report styling; Save / Save As; ⌘+/− text zoom; docx-derived output naming
+- **2026-05-16: v1.1 (same day, third push)** — Cycle 5 in-app Help menu + FAQ window (⌘?); text-zoom dependency-tracking fix; Reveal Output uses lastSavedURL; Holiday-mismatch reclassification (advisories don't halt build, docx-only-with-text becomes HolidaySpecial suggestion); Daily Options restructured (Allow art checks to pass, Weekday full names); bracket-missing-extension warning removed; lenient DateSlug + skip_preamble parsing (handles WCS-style "New:1/1/27" / "1/4/27m"); WCS 2027 Daily verified structurally identical to production pre-hand-curation.
 
 ## Hard rules captured this session
-- **xlsx is canonical for Holiday text.** Build halts on mismatch.
+- **xlsx is canonical for Holiday text.** Build halts on **wording** mismatch. xlsx-only entries are advisories that don't halt (xlsx wins; holiday emits anyway).
+- **docx-only Holiday text** (xlsx doesn't have it) → editor probably meant **HolidaySpecial**. Surface as a lint warning with paragraph index + suggested style. v1.1 makes "Walt Disney born December 5, 1901"-style entries actually land in the output.
 - **Normal is never a valid Chronicle paragraph style.** Per-paragraph warning fires for every non-empty Normal in the post-preamble content area.
+- **`aid:pstyle` is the editor↔comp seam.** Editor-side style names stay uniform across all titles; per-title InDesign customization (Weekday-Wend, Month-Wend etc.) happens via comp-side remap post-import (automated or s/r). ChroniCal extracts editor-consistent names — do NOT add per-title pstyle toggles.
+- **DateSlug parsing must be lenient.** WCS-style docx uses comp annotations like "New:1/1/27" or "1/4/27m". Strict regex drops the first day's content. Same lenient extraction applies in `skip_preamble`.
 - **Dumb Birds is poisoned reference data** (Jefe 2026-05-16). Chronicle took the workflow back in-house. Do NOT use it to design pipeline behavior.
 - **Don't pre-stage with `git add` when a single `git commit -o <files>` would do** — except for untracked files, which `git commit -o` does NOT auto-stage despite the docs. Pre-stage with `git add <file>` only when explicitly named.
+- **@AppStorage subscribes on READ, not declaration.** SwiftUI views must access the property in body (e.g. `HapFont.scale = textScale`) for the subscription to register. Just declaring `@AppStorage("foo")` won't trigger re-render when the value changes.
 
 ## Verification (v1.0)
 End-to-end in the actual .app against:
