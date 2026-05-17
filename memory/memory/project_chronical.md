@@ -186,6 +186,28 @@ End-to-end in the actual .app against:
 - `gui/ChronCal/ChronCal/ChronCalApp.swift` — App entry, SaveCommands, ⌘+/−/0 zoom commands
 - `gui/ChronCal/ChronCal/PythonRunner.swift` — async Process wrapper; venv at `~/Library/Application Support/ChroniCal/venv/bin/python3`
 
+## Distribution (path locked 2026-05-16)
+**Apple Developer Program enrollment confirmed 2026-05-16.** ChroniCal ships as a
+**Developer ID-signed and notarized .dmg**, not via the Mac App Store.
+
+Why this path:
+- Comps at Chronicle Books (and the other 5–6 publisher clients Happenstance will
+  port off perl/xsl) install by double-clicking a .dmg. No App Store account, no
+  IT review, no sandbox restrictions on filesystem access (ChroniCal needs broad
+  access for user-dropped xlsx/docx and `~/Documents/ChroniCal/` writes).
+- Notarization passes Apple's automated malware scan → no Gatekeeper warning on
+  first launch.
+- TestFlight available for beta distribution to comps without sending raw .app
+  bundles around.
+
+What this unblocks:
+- Signed builds the comps can run without "unidentified developer" friction.
+- Per-client distribution is just rebranded DMGs of the same signed binary.
+- iCloud / push entitlements available later if the product needs them.
+
+Status: dev account live, signing identity not yet pulled into the Xcode project.
+Cut the first signed/notarized build when v1.x stabilizes for external comps.
+
 ## Mounted paths Jefe uses for ChroniCal context
 - `~/sync/Documents/ClaudeCode/happenstance/` — repo
 - `~/sync/Documents/ClaudeCode/calendars/{year}/` — Jefe's per-year working files (xlsx etc.)
