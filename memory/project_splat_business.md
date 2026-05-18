@@ -21,17 +21,23 @@ fully sandboxed from day one (App Sandbox + Hardened Runtime).
 Brand spelling: **Splat Haus** (two words). The domain `splat.haus`
 IS the wordmark. Bundle ID: `haus.splat.SplatHaus`.
 
-**Three capture tiers (per CONCEPT.md design research, 2026-05-16):**
-- **Amateur** (v1.2): automatic, COLMAP-free SfM (recent CVPR
-  research)
-- **Pro** (v1.1): deliberate camera positions + IMU gyro, no SfM
+**Four capture tiers:**
 - **Marker** (v1.0 BETA): printed ArUco fiducial targets, OpenCV
-  detection solves pose directly, no SfM, no COLMAP
+  detection, no SfM, no COLMAP — App Sandbox + App Store eligible
+- **Pro** (v1.1): deliberate camera positions + IMU gyro, no SfM
+- **Amateur** (v1.2): automatic, COLMAP-free SfM (recent CVPR
+  research path)
+- **Aerial** (v1.5): DJI Mavic 4 Pro drone, mission planner via DJI
+  Mobile SDK V5, joint exterior+interior splat. Opens luxury real
+  estate ($1,500-3,000) and adjacent markets (construction,
+  insurance, historic preservation).
 
-**Marker beta resolves sandbox/COLMAP problem.** v1.0 ships with no
-SfM dependency — App Sandbox + App Store eligible from launch. The
-"Scan Kit" hardware accessory (laminated marker targets) is a
-margin-positive add-on tied to the software.
+**Hardware accessory:** "Scan Kit" — printable PDFs in app bundle
+(free), laminated physical targets as separate accessory.
+
+**FAA Part 107** license required for commercial drone work; planned
+before v1.5 ships. **Surveyor SME** in Jeff's network being scoped
+for advisory role.
 
 **Working docs in /Volumes/Stilgar/Sync/Documents/ClaudeCode/splat-business/:**
 - `STRATEGY.md` — Business strategy, market, pricing, names/TLDs
