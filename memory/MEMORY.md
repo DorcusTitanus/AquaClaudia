@@ -202,6 +202,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [feedback_find_through_sync_symlink.md](feedback_find_through_sync_symlink.md) — BSD `find ~/sync ...` silently returns empty (symlink-as-starting-path is not traversed). Use `find ~/sync/ ...` (trailing slash) or `find -L ~/sync ...`. Also affects `du`, `rg`, etc.
 - [feedback_apps_ship_self_contained.md](feedback_apps_ship_self_contained.md) — Apps Jefe builds must work on other computers. Bundle scripts/assets inside the binary by default. No hardcoded `/Volumes/...` or `~/repo/...` paths in shipping code. Platform-specific patterns documented.
 - [feedback_indesign_thread_pain.md](feedback_indesign_thread_pain.md) — Open (unverified). XML Place may break master-page text threads on ChroniCal layouts. Tentative answer: Primary Text Frame + Smart Text Reflow. Verify on a copy before recommending.
+- [feedback_csusb_slack_share.md](feedback_csusb_slack_share.md) — When Jefe ships content this summer, remind him to post in the CSUSB IDT cohort Slack he created
 - [reference_canvas_admin_creds.md](reference_canvas_admin_creds.md) — Canvas site admin login (`admin@canvas.wilsonidt.com`) stored in Dashlane under `canvas-homelab-admin`; recovery via Rails console
 - [reference_screenshots_dir.md](reference_screenshots_dir.md) — Screenshots on Thufir live at `~/Pictures/Screenshots/`; default location when Jefe says "check the screenshot"
 
@@ -213,6 +214,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [project_research_gap_finder.md](project_research_gap_finder.md) — Python pipeline surfacing research/patent coverage gaps
 - [project_lifeskills.md](project_lifeskills.md) — "Life Skills Before AI Does It For You" YouTube + OER course series
 - [project_content_pipeline.md](project_content_pipeline.md) — Running list of content-worthy projects for polymathery/wilsonidt
+- [project_summer_26_content_pipeline.md](project_summer_26_content_pipeline.md) — Summer 2026 dedicated content pipeline build season; Shopify/Printify/eBay/App Store primed
 - [project_bekins_hall_vr.md](project_bekins_hall_vr.md) — 1910 campus dorm closing; Jeff + Bill Malin capturing max-quality raw archive (6D + A1 stills + Insta360 X4 360° video); splat/VR processing deferred
 - [project_splat_business.md](project_splat_business.md) — **Splat Haus** — Mac-native Insta360-to-Gaussian-splat app for real estate. Brand registered May 2026 (splat.haus, splathaus.app, splathaus.io). Summer build. Insta360 SDK + msplat + MetalSplatter. $90-175K/yr potential
 - [canvas-screenshot-workflow.md](canvas-screenshot-workflow.md) — Reusable pattern for uploading and inserting tutorial screenshots
