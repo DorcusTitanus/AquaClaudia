@@ -216,6 +216,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [project_content_pipeline.md](project_content_pipeline.md) — Running list of content-worthy projects for polymathery/wilsonidt
 - [project_summer_26_content_pipeline.md](project_summer_26_content_pipeline.md) — Summer 2026 dedicated content pipeline build season; Shopify/Printify/eBay/App Store primed
 - [project_dmx_lighting.md](project_dmx_lighting.md) — DMX lighting dev: ENTTEC USB Pro + QLC+ V4 on M5. Lake Arrowhead (Sat 5/24, Taylor Swift tribute) + Farmhouse Collective (Thu, Boogaloo Assassins, grandMA2). Patch maps inside.
+- [project_ai_lighting_controller.md](project_ai_lighting_controller.md) — **North-star vision** — silicon-native macOS DMX+AI app. Realtime NL control + multi-camera (incl. 360°) visual feedback closing the loop back to the agent. PoC layer is project_dmx_lighting.
 - [project_bekins_hall_vr.md](project_bekins_hall_vr.md) — 1910 campus dorm closing; Jeff + Bill Malin capturing max-quality raw archive (6D + A1 stills + Insta360 X4 360° video); splat/VR processing deferred
 - [project_splat_business.md](project_splat_business.md) — **Splat Haus** — Mac-native Insta360-to-Gaussian-splat app for real estate. Brand registered May 2026 (splat.haus, splathaus.app, splathaus.io). Summer build. Insta360 SDK + msplat + MetalSplatter. $90-175K/yr potential
 - [canvas-screenshot-workflow.md](canvas-screenshot-workflow.md) — Reusable pattern for uploading and inserting tutorial screenshots
