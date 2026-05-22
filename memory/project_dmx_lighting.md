@@ -86,7 +86,7 @@ Total footprint ~ch 176 (well within 384).
 
 ## Venue 2: Farmhouse Collective, Riverside CA — Thursday (Boogaloo Assassins)
 
-Console at FMC: **grandMA2** (PC software). The Hog screenshot Jefe shared is from Dave's touring rig, NOT FMC's house console — but Dave's Hog patch happens to describe the FMC rig (Dave's the FMC LD). When Jefe mixes at FMC he uses the house MA2. The `.show.gz` on /Volumes/TAXES/gma2/shows/ is a separate touring MA2 file (Lenny-PC origin, 2021–2024 venues) and is NOT the FMC patch — fresh XML export from FMC's console is the right source of truth.
+Console at FHC: **grandMA2** (PC software). The Hog screenshot Jefe shared is from Dave's touring rig, NOT FHC's house console — but Dave's Hog patch happens to describe the FHC rig (Dave's the FHC LD). When Jefe mixes at FHC he uses the house MA2. The `.show.gz` on /Volumes/TAXES/gma2/shows/ is a separate touring MA2 file (Lenny-PC origin, 2021–2024 venues) and is NOT the FHC patch — fresh XML export from FHC's console is the right source of truth.
 
 ### Confirmed Patch (Hog screenshot, 2025-03-27, Universe 1)
 
@@ -130,10 +130,31 @@ Profiles built from official Chauvet DMX chart PDFs (Beam Wash Rev 5 V1.250121, 
 - `~/Library/Application Support/QLC+/Fixtures/Chauvet-Rogue-Outcast-1-Beam-Wash.qxf` — 30CH mode
 - `~/Library/Application Support/QLC+/Fixtures/Chauvet-Rogue-Outcast-1M-Beam.qxf` — 25CH mode
 - `~/Library/Application Support/QLC+/Fixtures/Chauvet-COLORdash-Par-H7X.qxf` — all 5 modes (6/8/9/13/14)
-- `~/Documents/QLC+/Farmhouse-Collective.qxw` — 22 fixtures patched per Hog map, Universe 1, output "DMX USB" plugin line 0 (re-bind to ENTTEC in QLC+ I/O Manager on first run)
+- `~/Documents/QLC+/Farmhouse-Collective.qxw` — 22 fixtures patched per Hog map, Universe 1
+- Functions: 22 ID Scenes + Blackout, "Walk Fixtures" Chaser (single-shot, manual advance), VC Cue List widget (Space/Backspace/Esc)
+- 6 Fixture Groups (placeholder roles, to be re-sorted post-walk)
+
+### ENTTEC Binding (verified 2026-05-22 at home, pre-FHC)
+- Device: ENTTEC DMX USB Pro Mk1, S/N 2340106, OS dev nodes `/dev/cu.usbserial-EN520106` + `/dev/tty.usbserial-EN520106`
+- QLC+ Inputs/Outputs → Universe 1 Output → "DMX USB / 2: DMX USB PRO - DMX Output 1"
+- Driver: **libFTDI** (NOT the macOS VCP driver — QLC+'s bundled libFTDI claims the device cleanly on M5 Pro / current macOS). No kext fiddling needed.
+- Trick if device disappears: quit QLC+, replug ENTTEC, then launch QLC+ (order matters — QLC+ needs to claim the chip before the OS VCP driver locks it).
+
+### QLC+ V4 Docs Source
+Official docs live in the qlcplus GitHub repo at `resources/docs/html_en_EN/`. Fetch via raw GitHub URL:
+`https://raw.githubusercontent.com/mcallegari/qlcplus/master/resources/docs/html_en_EN/<page>.html`
+
+The qlcplus.org site is behind Cloudflare mod_security and blocks WebFetch. Use the repo path. Key pages:
+- `mainwindow.html` — toolbar buttons and shortcuts (DMX Monitor = ⌘M, Address Tool, DMX Dump = ⌘D, Operate Mode toggle = ⌘F12)
+- `fixturemonitor.html` — DMX Monitor (DMX view + 2D view)
+- `dmxusbplugin.html` — ENTTEC USB Pro specifics
+- `disable_apple_ftdi_driver.html` — macOS FTDI VCP workaround if libFTDI ever fails to claim
+- `vccuelist.html` — Cue List widget schema
+- `howto-input-output-mapping.html` — I/O binding tutorial
+- Macros: the macOS app menu bar is **View** + standard Mac menus, not "Tools" — earlier sessions hallucinated a "Tools" menu.
 
 ### Open Items
-- [ ] Export patch as XML from FMC's MA2 (`Setup → Patch & Fixture Schedule → Export → XML`, lands in `/gma2/exports/`)
+- [ ] Export patch as XML from FHC's MA2 (`Setup → Patch & Fixture Schedule → Export → XML`, lands in `/gma2/exports/`)
 - [ ] Walk fixture # → physical position: in MA2 hit `Fixture 301 Full Please`, note where it lights; repeat for 301–306, 201–212, 1–4. ~3 minutes
 - [ ] Confirm H7X identification via the actual fixture sticker (vs. Quad-7 / Hex-7 / H12 variants)
 - [ ] Note any Hog/MA2 cue list or palettes worth porting to QLC+
