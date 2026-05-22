@@ -98,8 +98,8 @@ Console at FMC: **grandMA2** (PC software). The Hog screenshot Jefe shared is fr
 | 304 | Rogue Outcast 1 BeamWash | 30ch | 1: 61 |
 | 305 | Rogue Outcast 1 BeamWash | 30ch | 1: 91 |
 | 306 | Rogue Outcast 1 BeamWash | 30ch | 1: 121 |
-| 201–211 | Colordash Par stage1 | 9ch | 1: 181, 190, 199, 208, 217, 226, 235, 244, 253, 262, 271 |
-| 212 | Colordash Par stage1 | 9ch | 1: 380 |
+| 201–211 | COLORdash Par-H7X | 9ch | 1: 181, 190, 199, 208, 217, 226, 235, 244, 253, 262, 271 |
+| 212 | COLORdash Par-H7X | 9ch | 1: 380 |
 | 1 | Rogue Outcast 1M Beam | 25ch | 1: 280 |
 | 2 | Rogue Outcast 1M Beam | 25ch | 1: 305 |
 | 3 | Rogue Outcast 1M Beam | 25ch | 1: 330 |
@@ -113,23 +113,29 @@ Six trusses total: **three downstage, three upstage.**
 
 **Downstage** (12 fixtures):
 - 4× **quadrant movers** across the front of stage → **Rogue Outcast 1 BeamWash** (segmented face)
-- 4× **LED wash pointed at crowd** → **Colordash Par stage1** (audience-facing pucks)
-- 4× **LED wash pointed at stage** → **Colordash Par stage1** (front light for the band)
+- 4× **LED wash pointed at crowd** → **COLORdash Par-H7X** (audience-facing pucks)
+- 4× **LED wash pointed at stage** → **COLORdash Par-H7X** (front light for the band)
 
 **Upstage** (10 fixtures):
 - 2× **quadrant movers** at far stage L/R → **Rogue Outcast 1 BeamWash**
 - 4× **single-lens movers** toward center → **Rogue Outcast 1M Beam** (Hog #1–4)
-- ~4× **LED wash** (some pointed at back wall) → **Colordash Par stage1**
+- ~4× **LED wash** (some pointed at back wall) → **COLORdash Par-H7X**
 
 Count check: 6 BeamWash (4 DS + 2 US) + 4 1M Beam (US center) + 12 Colordash (4 audience + 4 front-light + 4 upstage) = **22 fixtures.** ✓
 
 Hog fixture numbering hint: BeamWash 301 sits at DMX ch 151 (last in the block), 302 at ch 1 — suggests Dave numbered them in stage-position order with 302 = first physical fixture, 301 = last/odd-position. Untested.
 
+### QLC+ Files (built 2026-05-22)
+Profiles built from official Chauvet DMX chart PDFs (Beam Wash Rev 5 V1.250121, 1M Beam Rev 1 V1.240515, Par-H7X Rev 1).
+- `~/Library/Application Support/QLC+/Fixtures/Chauvet-Rogue-Outcast-1-Beam-Wash.qxf` — 30CH mode
+- `~/Library/Application Support/QLC+/Fixtures/Chauvet-Rogue-Outcast-1M-Beam.qxf` — 25CH mode
+- `~/Library/Application Support/QLC+/Fixtures/Chauvet-COLORdash-Par-H7X.qxf` — all 5 modes (6/8/9/13/14)
+- `~/Documents/QLC+/Farmhouse-Collective.qxw` — 22 fixtures patched per Hog map, Universe 1, output "DMX USB" plugin line 0 (re-bind to ENTTEC in QLC+ I/O Manager on first run)
+
 ### Open Items
 - [ ] Export patch as XML from FMC's MA2 (`Setup → Patch & Fixture Schedule → Export → XML`, lands in `/gma2/exports/`)
 - [ ] Walk fixture # → physical position: in MA2 hit `Fixture 301 Full Please`, note where it lights; repeat for 301–306, 201–212, 1–4. ~3 minutes
-- [ ] Verify Colordash 9ch mode (Quad-RGBW vs variant)
-- [ ] Build QLC+ fixture profiles for all three Chauvet types
+- [ ] Confirm H7X identification via the actual fixture sticker (vs. Quad-7 / Hex-7 / H12 variants)
 - [ ] Note any Hog/MA2 cue list or palettes worth porting to QLC+
 
 ### MA2 Binary Parse Lesson
