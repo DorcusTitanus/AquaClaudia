@@ -86,7 +86,7 @@ Total footprint ~ch 176 (well within 384).
 
 ## Venue 2: Farmhouse Collective, Riverside CA — Thursday (Boogaloo Assassins)
 
-Console: **Hog 4** (Dave's). Earlier shorthand said grandMA2 — the `.show.gz` on /Volumes/TAXES/gma2/shows/ is actually a separate touring MA2 file (Lenny-PC origin, accumulated 2021–2024 shows: Wiltern, Palace Theatre, Fox Pomona, etc.) and is NOT the Farmhouse patch. Authoritative source is Dave's Hog instrument list.
+Console at FMC: **grandMA2** (PC software). The Hog screenshot Jefe shared is from Dave's touring rig, NOT FMC's house console — but Dave's Hog patch happens to describe the FMC rig (Dave's the FMC LD). When Jefe mixes at FMC he uses the house MA2. The `.show.gz` on /Volumes/TAXES/gma2/shows/ is a separate touring MA2 file (Lenny-PC origin, 2021–2024 venues) and is NOT the FMC patch — fresh XML export from FMC's console is the right source of truth.
 
 ### Confirmed Patch (Hog screenshot, 2025-03-27, Universe 1)
 
@@ -107,16 +107,30 @@ Console: **Hog 4** (Dave's). Earlier shorthand said grandMA2 — the `.show.gz` 
 
 22 fixtures, all Universe 1, ch 1–388. The M Beam block wedged at 280–379 forced the 12th Colordash to ch 380.
 
-Fixture roles (from rig sketch — confirm next visit):
-- 6× **Chauvet Rogue Outcast 1 BeamWash** — pixel-mappable LED-ring face; some likely the "audience-facing pucks" originally noted, others overhead wash
-- 12× **Chauvet Colordash Par stage1** — front/back/stage wash pars in 9ch mode
-- 4× **Chauvet Rogue Outcast 1M Beam** — tight-beam movers (the "beamer-style" movers)
+### Physical Layout (confirmed by Jefe 2026-05-22)
+
+Six trusses total: **three downstage, three upstage.**
+
+**Downstage** (12 fixtures):
+- 4× **quadrant movers** across the front of stage → **Rogue Outcast 1 BeamWash** (segmented face)
+- 4× **LED wash pointed at crowd** → **Colordash Par stage1** (audience-facing pucks)
+- 4× **LED wash pointed at stage** → **Colordash Par stage1** (front light for the band)
+
+**Upstage** (10 fixtures):
+- 2× **quadrant movers** at far stage L/R → **Rogue Outcast 1 BeamWash**
+- 4× **single-lens movers** toward center → **Rogue Outcast 1M Beam** (Hog #1–4)
+- ~4× **LED wash** (some pointed at back wall) → **Colordash Par stage1**
+
+Count check: 6 BeamWash (4 DS + 2 US) + 4 1M Beam (US center) + 12 Colordash (4 audience + 4 front-light + 4 upstage) = **22 fixtures.** ✓
+
+Hog fixture numbering hint: BeamWash 301 sits at DMX ch 151 (last in the block), 302 at ch 1 — suggests Dave numbered them in stage-position order with 302 = first physical fixture, 301 = last/odd-position. Untested.
 
 ### Open Items
-- [ ] Confirm physical role of each fixture # (which BeamWash # is which puck/overhead, where each Colordash sits)
-- [ ] Re-photo the full Hog patch with mode column visible (verify 9ch is Quad-RGBW vs other Colordash variant)
-- [ ] Build QLC+ fixture profiles for all three types from Chauvet docs
-- [ ] Note any Hog cue list / palettes worth porting
+- [ ] Export patch as XML from FMC's MA2 (`Setup → Patch & Fixture Schedule → Export → XML`, lands in `/gma2/exports/`)
+- [ ] Walk fixture # → physical position: in MA2 hit `Fixture 301 Full Please`, note where it lights; repeat for 301–306, 201–212, 1–4. ~3 minutes
+- [ ] Verify Colordash 9ch mode (Quad-RGBW vs variant)
+- [ ] Build QLC+ fixture profiles for all three Chauvet types
+- [ ] Note any Hog/MA2 cue list or palettes worth porting to QLC+
 
 ### MA2 Binary Parse Lesson
 The `farmhouse 1.show.gz` on the TAXES drive is a touring MA2 showfile from a different operator (Lenny-PC). It carries years of accumulated patch entries from old venues (Wiltern Mac 600s, Palace Theatre Sp1008s, etc.). Reverse-engineering its binary got the BeamWash addresses right by luck, the M Beam addresses wrong (stale residue from a prior patch), and mis-identified the 12 Colordash Pars as "Sp1008." **Always pair a binary parse with an authoritative console export/screenshot** before trusting any decoded patch.
