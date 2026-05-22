@@ -75,8 +75,14 @@ when a MoonPhase precedes it in the same cell.
 (5 or 6 complete weeks). Without it, only the last partial row is filled,
 which is the planner default.
 
-**Bookend:** the script emits Jan of the *following* year as a bookend
-month after December.
+**Bookend:** Wall calendars are **12 months exactly** — Jan through Dec
+of the build year, ending at December. There is **no January-of-next-year
+bookend** (Jefe verified against Totoro 2027 Wall print copy in hand,
+2026-05-17). That trait belongs to Planner, not Wall — Planner's weekly
+spreads straddle Dec/Jan, so Planner emits a Jan bookend month so the
+final Dec-Jan straddle week has a valid month to attribute to.
+v0.4 wallBuilder.py incorrectly added the bookend after misreading this
+memo; removed in v1.1.1.
 
 ### 2. Planner
 
