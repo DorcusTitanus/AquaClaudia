@@ -203,6 +203,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 - [feedback_apps_ship_self_contained.md](feedback_apps_ship_self_contained.md) — Apps Jefe builds must work on other computers. Bundle scripts/assets inside the binary by default. No hardcoded `/Volumes/...` or `~/repo/...` paths in shipping code. Platform-specific patterns documented.
 - [feedback_indesign_thread_pain.md](feedback_indesign_thread_pain.md) — Open (unverified). XML Place may break master-page text threads on ChroniCal layouts. Tentative answer: Primary Text Frame + Smart Text Reflow. Verify on a copy before recommending.
 - [feedback_csusb_slack_share.md](feedback_csusb_slack_share.md) — When Jefe ships content this summer, remind him to post in the CSUSB IDT cohort Slack he created
+- [feedback_no_time_playacting.md](feedback_no_time_playacting.md) — Don't perform temporal awareness. No "tonight" / "have a good X" sign-offs, no framing that assumes real-time presence. Use absolute dates.
 - [reference_canvas_admin_creds.md](reference_canvas_admin_creds.md) — Canvas site admin login (`admin@canvas.wilsonidt.com`) stored in Dashlane under `canvas-homelab-admin`; recovery via Rails console
 - [reference_screenshots_dir.md](reference_screenshots_dir.md) — Screenshots on Thufir live at `~/Pictures/Screenshots/`; default location when Jefe says "check the screenshot"
 
