@@ -153,11 +153,70 @@ The qlcplus.org site is behind Cloudflare mod_security and blocks WebFetch. Use 
 - `howto-input-output-mapping.html` — I/O binding tutorial
 - Macros: the macOS app menu bar is **View** + standard Mac menus, not "Tools" — earlier sessions hallucinated a "Tools" menu.
 
+### Confirmed Physical Positions (walked 2026-05-22 at FHC via tilt-jiggle/red-push)
+
+| Fixture | DMX | Location | Aim |
+|---|---|---|---|
+| BW 301 | 151 | RT (Rear Truss) SR | — (US Far quadrant mover) |
+| BW 302 | 1 | RT SL | — (US Far quadrant mover) |
+| BW 303 | 31 | FT (Front Truss) pos 1 / far SL | — |
+| BW 304 | 61 | FT pos 3 | — |
+| BW 305 | 91 | FT pos 2 | — |
+| BW 306 | 121 | FT pos 4 / far SR | — |
+| Beam 1 | 280 | Back Truss SR | — |
+| Beam 2 | 305 | Back Truss Center SL | — |
+| Beam 3 | 330 | Back Truss Center SR | — |
+| Beam 4 | 355 | Back Truss SL | — |
+| Par 201 | 181 | RT SL | (aim TBD) |
+| Par 202 | 190 | RT Center | DS (possibly dead — didn't light during All Blue) |
+| Par 203 | 199 | RT Center | US |
+| Par 204 | 208 | RT Center | US |
+| Par 205 | 217 | FT SR | US |
+| Par 206 | 226 | FT 2nd from SR | Grass (audience blinder) |
+| Par 207 | 235 | FT 2nd from SL | US |
+| Par 208 | 244 | FT 2nd from SR | US |
+| Par 209 | 253 | FT 2nd from SL | US (doubled with 207) |
+| Par 210 | 262 | FT 2nd from SL | Grass |
+| Par 211 | 271 | FT SL | US |
+| Par 212 | 380 | FT SL (presumed) | Grass — **DEAD fixture** |
+
+Patch order ≠ physical order. Dave numbered both BeamWashes (303→304→305→306 maps to physical pos 1, 3, 2, 4) and 1M Beams (1, 2, 3, 4 maps to physical SR, C-SL, C-SR, SL) in non-linear sequences. **Don't infer position from Hog #.**
+
+Effective rig: **21 working fixtures** (Par 212 dead, Par 202 possibly dead — needs confirmation).
+
+### Lessons Learned at FHC (2026-05-22)
+
+- **BLACK OUT button visual state is unreliable on macOS Sequoia.** The toolbar button toggles state but doesn't visually indicate on/off — Qt button styling issue. Verify state via DMX Monitor (`⌘M`) or build a VC Button with type "Toggle Blackout" which does render state correctly.
+- **Functions don't fire by double-clicking in V4 Operate Mode.** They must be triggered via VC widgets (Button, Slider, Cue List), MIDI/OSC, or scripts. Function Manager is authoring-only.
+- **VC Button XML schema** that works in QLC+ 4.14.4 (script-injection had wrong format earlier):
+  ```xml
+  <Button Caption="Name" ID="N" Icon="">
+    <WindowState Visible="True" X="..." Y="..." Width="..." Height="..."/>
+    <Appearance>...</Appearance>
+    <Function ID="N"/>
+    <Action>Toggle</Action>
+    <Key>B</Key>
+    <Intensity Adjust="False">100</Intensity>
+  </Button>
+  ```
+  The `Icon=""` and `<Intensity Adjust="False">100</Intensity>` are required. Building via UI (right-click VC canvas → Add → Button → Properties) is more reliable than authoring XML.
+- **Cue List widget Steps got stripped** during QLC+ 4.14.4 load-and-resave of the workspace built in 4.13.0. The "Walk Fixtures" chaser had 22 steps in source XML but loaded empty.
+- **BeamWash needs all of: dimmer + color channel + strobe in "On" range (20-24).** Pushing just the dimmer ≠ light. Earlier successful single-channel tests worked because residual color values lingered from Dave's prior show; once reset, dimmer-only produced no light.
+- **ENTTEC unplug/replug mid-session drops the output binding silently.** Re-tick the Output checkbox in Inputs/Outputs after any replug. Don't unplug during a session — treat ENTTEC like an audio interface (connect once, leave it).
+- **Simple Desk page indicator** = number between the orange arrows in top-left. Each page = 32 channels. Page N starts at channel (N-1)*32 + 1.
+- **Network: dedicated bridge router needed for FHC pattern.** Jefe's Linksys was in router mode (NAT) by default, putting iPad on 192.168.1.x while M32C lived on venue's 10.20.0.x — couldn't reach. Bridge Mode fixed it. Future: kit a separate AP-only router (GL.iNet Slate AX recommended ~$80) for venues where venue provides DHCP, keep main router for UI24R / TF3 gigs.
+
+### Scenes Built 2026-05-22
+- **"All Blue (3s fade)"** — Function ID 24 in Farmhouse-Collective.qxw. Fade In/Out = 3000ms. All 22 fixtures asserted blue (BW: R=0,G=0,B=255,W=0, dimmers 255, strobes 22; Beam: R=0,G=0,B=255, dim 255, strobe 5; Par: R=0,G=0,B=255, dim 255). VC Button "All Blue" wired to it (keyboard shortcut B).
+
 ### Open Items
-- [ ] Export patch as XML from FHC's MA2 (`Setup → Patch & Fixture Schedule → Export → XML`, lands in `/gma2/exports/`)
-- [ ] Walk fixture # → physical position: in MA2 hit `Fixture 301 Full Please`, note where it lights; repeat for 301–306, 201–212, 1–4. ~3 minutes
-- [ ] Confirm H7X identification via the actual fixture sticker (vs. Quad-7 / Hex-7 / H12 variants)
-- [ ] Note any Hog/MA2 cue list or palettes worth porting to QLC+
+- [ ] Verify Par 202 (DMX 190) — push ch 190 + 192 in Simple Desk; if no light, second dead fixture
+- [ ] Visually confirm Par 212 dead at FT SL Grass position (vs. just unpatched)
+- [ ] Build palette scenes: color palettes (red/amber/blue/warm white/CTO), position palettes (lead center, drum riser, SR/SL), beam palettes (zoom narrow/wide, strobe)
+- [ ] Build look scenes for Boogaloo Assassins set (intro/verse/chorus/solo)
+- [ ] Re-populate Fixture Groups (QLC+ 4.14.4 stripped Heads on save — currently empty placeholders)
+- [ ] Rebuild "Walk Fixtures" Chaser steps if needed (lost in 4.13→4.14 migration)
+- [ ] Export MA2 patch — likely not needed since physical walk done, but a fresh XML export of just the LED PARS + Beam Wash layers would cross-verify
 
 ### MA2 Binary Parse Lesson
 The `farmhouse 1.show.gz` on the TAXES drive is a touring MA2 showfile from a different operator (Lenny-PC). It carries years of accumulated patch entries from old venues (Wiltern Mac 600s, Palace Theatre Sp1008s, etc.). Reverse-engineering its binary got the BeamWash addresses right by luck, the M Beam addresses wrong (stale residue from a prior patch), and mis-identified the 12 Colordash Pars as "Sp1008." **Always pair a binary parse with an authoritative console export/screenshot** before trusting any decoded patch.
