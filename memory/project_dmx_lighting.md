@@ -107,23 +107,54 @@ Console at FHC: **grandMA2** (PC software). The Hog screenshot Jefe shared is fr
 
 22 fixtures, all Universe 1, ch 1–388. The M Beam block wedged at 280–379 forced the 12th Colordash to ch 380.
 
-### Physical Layout (confirmed by Jefe 2026-05-22)
+### Physical Layout (verified at FHC during Boogaloo Assassins gig 2026-05-22)
 
-Six trusses total: **three downstage, three upstage.**
+Rig has **2 trusses**, not 3+3. There is NO "Back Truss":
 
-**Downstage** (12 fixtures):
-- 4× **quadrant movers** across the front of stage → **Rogue Outcast 1 BeamWash** (segmented face)
-- 4× **LED wash pointed at crowd** → **COLORdash Par-H7X** (audience-facing pucks)
-- 4× **LED wash pointed at stage** → **COLORdash Par-H7X** (front light for the band)
+- **Front Truss (FT)** — 4 positions across, SL → SR (pos 1 = far SL, pos 4 = far SR), plus a wider central span where multiple pars hang. Most downstage truss.
+- **Rear Truss (RT)** — single truss split into 3 zones: **SL, Center, SR.** All upstage fixtures (RT BWs, M Beams, RT pars) live on the RT. Band sets up ~3 ft US of RT.
 
-**Upstage** (10 fixtures):
-- 2× **quadrant movers** at far stage L/R → **Rogue Outcast 1 BeamWash**
-- 4× **single-lens movers** toward center → **Rogue Outcast 1M Beam** (Hog #1–4)
-- ~4× **LED wash** (some pointed at back wall) → **COLORdash Par-H7X**
+### Position Map (corrected and verified by aim-walking 2026-05-22)
 
-Count check: 6 BeamWash (4 DS + 2 US) + 4 1M Beam (US center) + 12 Colordash (4 audience + 4 front-light + 4 upstage) = **22 fixtures.** ✓
+**BeamWashes (6 × Rogue Outcast 1 BeamWash, 30CH):**
 
-Hog fixture numbering hint: BeamWash 301 sits at DMX ch 151 (last in the block), 302 at ch 1 — suggests Dave numbered them in stage-position order with 302 = first physical fixture, 301 = last/odd-position. Untested.
+| Position | Fixture | DMX |
+|---|---|---|
+| RT SL | BW 302 | 1 |
+| RT SR | BW 301 | 151 |
+| FT pos 1 (far SL) | BW 303 | 31 |
+| FT pos 2 (mid-SL) | BW 305 | 91 |
+| FT pos 3 (mid-SR) | BW 304 | 61 |
+| FT pos 4 (far SR) | BW 306 | 121 |
+
+**M1 Beams (4 × Rogue Outcast 1M Beam, 25CH) — all on RT:**
+
+| Position on RT | Fixture | DMX |
+|---|---|---|
+| RT SL | Beam 4 | 355 |
+| RT Center (left half) | Beam 2 | 305 |
+| RT Center (right half) | Beam 3 | 330 |
+| RT SR | Beam 1 | 280 |
+
+**Pars (12 × Chauvet COLORdash Par-H7X, 9CH):**
+
+| Position | Aim US (band) | Aim Grass (audience) | Aim DS (front light) |
+|---|---|---|---|
+| RT SL | — | — | Par 201 |
+| RT Center | Par 203, 204 | — | Par 202 *(dead blue LED)* |
+| FT SR (far) | Par 205 | — | — |
+| FT 2nd from SR | Par 208, 209 | Par 206 | — |
+| FT 2nd from SL | — | Par 210 | — |
+| FT SL (far) | Par 211 | Par 212 *(dead)* | — |
+| FT (location TBD — likely center span) | — | Par 207 | — |
+
+Working pars: 11. Dead: Par 202 (blue LED) and Par 212 (whole fixture).
+
+### Patch order is NOT physical order
+
+- BeamWash patch order 303→304→305→306 maps to physical positions 1, 3, 2, 4 (Dave wove the patch, not L→R).
+- M Beam patch order 1→2→3→4 maps to physical SR, Center-SL, Center-SR, SL. Reverse weave.
+- **Don't infer position from Hog/fixture number.** Always reference the position map above.
 
 ### QLC+ Files (built 2026-05-22)
 Profiles built from official Chauvet DMX chart PDFs (Beam Wash Rev 5 V1.250121, 1M Beam Rev 1 V1.240515, Par-H7X Rev 1).
@@ -153,36 +184,31 @@ The qlcplus.org site is behind Cloudflare mod_security and blocks WebFetch. Use 
 - `howto-input-output-mapping.html` — I/O binding tutorial
 - Macros: the macOS app menu bar is **View** + standard Mac menus, not "Tools" — earlier sessions hallucinated a "Tools" menu.
 
-### Confirmed Physical Positions (walked 2026-05-22 at FHC via tilt-jiggle/red-push)
+(The detailed position map above this section supersedes earlier inline tables. Effective rig: **20 working fixtures** — Par 202 has dead blue LED but R/G/A/W/UV still work, Par 212 is fully dead.)
 
-| Fixture | DMX | Location | Aim |
-|---|---|---|---|
-| BW 301 | 151 | RT (Rear Truss) SR | — (US Far quadrant mover) |
-| BW 302 | 1 | RT SL | — (US Far quadrant mover) |
-| BW 303 | 31 | FT (Front Truss) pos 1 / far SL | — |
-| BW 304 | 61 | FT pos 3 | — |
-| BW 305 | 91 | FT pos 2 | — |
-| BW 306 | 121 | FT pos 4 / far SR | — |
-| Beam 1 | 280 | Back Truss SR | — |
-| Beam 2 | 305 | Back Truss Center SL | — |
-| Beam 3 | 330 | Back Truss Center SR | — |
-| Beam 4 | 355 | Back Truss SL | — |
-| Par 201 | 181 | RT SL | (aim TBD) |
-| Par 202 | 190 | RT Center | DS (possibly dead — didn't light during All Blue) |
-| Par 203 | 199 | RT Center | US |
-| Par 204 | 208 | RT Center | US |
-| Par 205 | 217 | FT SR | US |
-| Par 206 | 226 | FT 2nd from SR | Grass (audience blinder) |
-| Par 207 | 235 | FT 2nd from SL | US |
-| Par 208 | 244 | FT 2nd from SR | US |
-| Par 209 | 253 | FT 2nd from SL | US (doubled with 207) |
-| Par 210 | 262 | FT 2nd from SL | Grass |
-| Par 211 | 271 | FT SL | US |
-| Par 212 | 380 | FT SL (presumed) | Grass — **DEAD fixture** |
+### Show-day design patterns (2026-05-22, Boogaloo Assassins + Jazz Quartet)
 
-Patch order ≠ physical order. Dave numbered both BeamWashes (303→304→305→306 maps to physical pos 1, 3, 2, 4) and 1M Beams (1, 2, 3, 4 maps to physical SR, C-SL, C-SR, SL) in non-linear sequences. **Don't infer position from Hog #.**
+**Band-position-dependent aim strategy:**
 
-Effective rig: **21 working fixtures** (Par 212 dead, Par 202 possibly dead — needs confirmation).
+- **Band mid-stage** (jazz quartet pattern, 3 ft US of RT):
+  - FT BWs (303, 304, 305, 306) tilted moderately back toward US, **warm amber** wash on the band
+  - RT BWs (301, 302) used as **cool kickers** aimed at mid-stage (different pan for each — one tilts forward, one tilts back depending on physical orientation; both converge on center)
+  - M Beams: SL+SR pair cross-aimed onto opposite-side back walls (Beam 1 SR→SL wall, Beam 4 SL→SR wall) for **larger wall gobos via longer throw** AND avoidance of the LED screen; Center pair (Beam 2, Beam 3) on the grass as **audience gobo playground**.
+
+- **Band pushed downstage** (vocalist pattern, expected to come up):
+  - FT BWs need a **more acute angle** (less back-tilt, more straight-down) since the band is now closer to the FT
+  - RT BWs become **kickers from behind with a different pan** — aim across stage rather than at center
+
+**Color principle confirmed:** warm = FT, cool = RT. Cross-fixture color discipline lets you flip mood by reassigning fixtures rather than recoloring.
+
+**Gobo behavior insight:** kids in the audience interact with gobo projection on the grass. Slow color/gobo cycles read as "magical" — fast cycles read as "strobe / nausea." For the 1M Beam: gobo scroll value **128** is slow (NOT 188 — the chart says 128→189 is slow→fast).
+
+### Saved live-tuned scenes (in `~/Documents/QLC+/Farmhouse-WarmFrontCoolRear.qxw`)
+
+- **Function ID 56 "WarmFrontCoolKickersForBeamWash"** — captured BW pan/tilt/color/zoom for mid-stage band. FT warm amber (BW 305 came out yellow R255 G255 — outlier in saturation), RT pure blue kickers at center stage.
+- **Function ID 57 "Warm Front Spinning cool beamers"** — captured M Beam state: Beam 1+4 cross-aim onto back wall, Beam 2+3 grass gobos.
+
+Use these as the canonical "live values" reference when rebuilding scenes for similar gigs.
 
 ### Lessons Learned at FHC (2026-05-22)
 
