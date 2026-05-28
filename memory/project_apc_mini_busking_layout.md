@@ -1,95 +1,185 @@
 ---
 name: project-apc-mini-busking-layout
-description: "APC mini mk2 → QLC+ layout design for live busking at FHC. Mood-based looks per genre/event page, momentary +15% intensity bumps as strobes, audio-triggered tempo. Design intent only — actual built workspace state is on shai-hulud and needs to be reconciled into this doc."
+description: "APC mini mk2 → QLC+ busking layout for FHC. Universal moods (vetoed per-event mood pages). No on-device paging. QLC+ Channel formula and APC palette confirmed. In-progress mapping to grid + side + fader bindings."
 metadata:
   type: project
 ---
 
 # APC mini mk2 Busking Layout
 
-Designed 2026-05-27 (this M5 / iMac session). The .qxw that's actually wired up was built earlier the same day on shai-hulud and is the source of truth for what's *in QLC+ right now*. This file captures the design *intent* — the framework Jefe agreed to. Reconcile with shai-hulud's workspace when accessible.
+Started design 2026-05-27 on alia. Hardware arrived and started programming 2026-05-29 on shai-hulud. This is the reconciled doc.
 
-**Why:** Busking the FHC rig from a laptop trackpad in low light during a set is fragile. The mk2's 8×8 RGB grid + 9 faders gives positional muscle memory and visual state feedback (green = playing, group-tinted idle states = literal rig map). Pre-deciding the row/column language now prevents the controller from becoming a junk drawer of one-off bindings.
+**Why:** Busking the FHC rig from a laptop trackpad in low light during a set is fragile. The mk2's 8×8 RGB grid + 9 faders gives positional muscle memory and visual state feedback. Pre-deciding the row/column language and proving out the QLC+ wiring now lets future sessions just author scenes, not debug protocol.
 
-**How to apply:** When wiring buttons or scenes for QLC+ at FHC, conform to the row/column verb-object framework below. When designing for a new venue or band, build pages — don't recolor the existing one. Every new feature gets evaluated against: "does this serve a busker who can't look down?"
+**How to apply:** When wiring buttons or scenes for QLC+ at FHC, conform to the row/column framework below. Use the **established QLC+ Channel formula** (note + 128) and the bundled **"Akai APC Mini mk2" input profile** which exposes the full named palette.
 
-Related: [[project-dmx-lighting]] (rig + venues), [[project-ai-lighting-controller]] (north star this is a PoC for).
+Related: [[project-dmx-lighting]] (rig + venues), [[project-ai-lighting-controller]] (north star).
 
 ---
 
-## Hardware
+## Hardware confirmed (mk2)
 
-**APC mini mk2** — assumed. RGB pads, 9 faders (8 + master), 8 scene-launch column on right, 8 track-select buttons across bottom, Shift bottom-right. If the actual hardware turns out to be mk1, the color-state language collapses to red/green/yellow and the idle group-tint scheme breaks.
+**Akai APC mini mk2** — RGB pads on the 8×8 grid AND on the 8 scene-launch + 8 track-select side buttons. Shift button is single-color red. 9 faders (8 + master), not motorized. macOS class-compliant USB MIDI — no driver install.
 
-## Decisions locked 2026-05-27
+## Decisions locked
 
-1. **Looks are mood-based, not song-based.** Bands rarely repeat; songs aren't predictable. Jefe reads vibe from the first few bars. 8 moods per page is the unit.
-2. **Pages are genre / recurring event.** FHC has very few repeating bands but several repeating events: **Jazz, Thursday Throwdown, Homegrown**. Mood × Genre is the navigation paradigm.
-3. **No dedicated strobe channel.** Fixtures sit at 85–90% intensity baseline. A momentary pad adds the remaining 10–15% as a manual flash on chorus hits. Released pad = back to baseline. This trades automated strobe for human-timed accents the band can feel.
-4. **Tempo is multi-source.** Tap-tempo pad for manual. Plan to also feed an **aux send from the FOH board into a cheap audio interface**, detecting kick (and maybe hi-hat) to drive auto-spin / chase rates. Aspirational for v2, not blocking the mk2 rollout.
-5. **Per-venue workspaces.** FHC and Lake Arrowhead are separate `.qxw` files. Arrowhead's Rockville 384 + cheap movers stay on the legacy board; that rig doubles as a **bench for prototyping pan/tilt combos for the Temu movers** before they ever see FHC. No shared workspace, no auto-switching.
+1. **Universal moods, not per-event moods.** Jefe vetoed per-genre mood banks. 8 universal moods that overlay any event/genre. Genre context handled via per-venue workspace files, not per-page mood sets. Suggested 8 moods organized by song-arc dynamics (Whisper / Calm / Building / Groove / Lift / Drop / Peak / Reset).
+2. **No on-device paging.** The mk2 has no page memory (unlike Stream Deck). Software-paging in QLC+ adds engineering complexity for marginal gain. Use **multiple workspace files** per venue/rig (FHC, Lake Arrowhead, etc.). For mid-show flexibility, use the bottom row track buttons as **modifier toggles** (audience-engagement mode, kick-sync mode, evens-only/odds-only, snap-vs-fade, tap-tempo).
+3. **No dedicated strobe channel.** Fixtures sit at 85–90% intensity baseline. A momentary pad adds the remaining 10–15% as a manual flash. Released pad = baseline.
+4. **Per-venue workspaces.** FHC and Lake Arrowhead are separate `.qxw` files. No shared workspace, no auto-switching.
+5. **Akai mk2 Input Profile is bundled with QLC+ V4.** Must be assigned to the universe before any feedback works.
 
 ## Layout — "rows are verbs, columns are objects"
 
 **Main 8×8 grid:**
 
-| Row | Function | 8 columns |
+| Row (top→bottom) | Function | 8 columns |
 |---|---|---|
-| 1 (top) | **MOODS** | 8 mood looks for the current page (genre/event). Hit one = recall that look. |
-| 2 | **COLOR PALETTE** | Red, Amber, Warm White, Cool White, Blue, Magenta, UV, *+15% Intensity Bump* (momentary, see decision 3) |
-| 3 | **POSITION PALETTE** (mover aim) | Band Ctr, Lead Vox, Drum Riser, SR, SL, Grass DS, Grass US, Back Wall |
-| 4 | **BEAM PALETTE** | Narrow, Wide, Slow Spin, Fast Spin, Gobo A, Gobo B, Open, Reset |
-| 5 | **GROUPS** | FT BWs, RT BWs, All BWs, M Beams Ctr, M Beams SL/SR, All Beams, Pars Band, Pars Grass |
-| 6 | **INDIV BWs** | BW 301, 302, 303, 304, 305, 306, *spare*, *spare* |
+| 1 (top) | **MOODS** | 8 universal moods: Whisper / Calm / Building / Groove / Lift / Drop / Peak / Reset |
+| 2 | **COLOR PALETTE** | Red / Amber / Warm White / Cool White / Blue / Magenta / UV / +15% Intensity Bump (momentary) |
+| 3 | **POSITION PALETTE** | Band Ctr / Lead Vox / Drum Riser / SR / SL / Grass DS / Grass US / Back Wall |
+| 4 | **BEAM PALETTE** | Narrow / Wide / Slow Spin CW / Slow Spin CCW / Gobo A / Gobo B / Open / Reset |
+| 5 | **GROUPS** | FT BWs / RT BWs / All BWs / M Beams Ctr / M Beams SL+SR / All Beams / Pars Band / Pars Grass |
+| 6 | **INDIV BWs** | BW 301, 302, 303, 304, 305, 306, spare, spare |
 | 7 | **INDIV M BEAMS + key Pars** | Beam 1, 2, 3, 4, Par 201, 205, 210, 211 (Shift → second par bank) |
-| 8 (bottom) | **TEMPO / ACCENT** | Tap Tempo, Strobe Bump, Blackout, *4 spares for chase steps / song-structure hits* |
+| 8 (bottom) | **TEMPO / ACCENT / MODIFIERS** | Tap Tempo, Strobe Bump, Blackout, Audience-engage, Kick-sync, Odds, Evens, Snap |
 
-**Right column (8 RGB scene-launch):** **MOOD SLOTS** confirm/preview — pre-arm a mood without firing it; release = fires. (Or: secondary mood bank. TBD with shai-hulud reconciliation.)
+**Right column (8 scene-launch) — Mood Slot Bank B.** Second bank of 8 moods (color/intensity variants — e.g. Whisper Red/Cyan/Amber/UV in the top 4; strobe/blackout/reset/panic in bottom 4).
 
-**Bottom row (8 RGB track-select):** **PAGES** — Page 1: Jazz, Page 2: Thursday Throwdown, Page 3: Homegrown, Pages 4–7: open genre slots, Page 8: system/housekeeping (panic, fixture monitor, blackout-with-feedback).
+**Bottom row (8 track-select):** **modifier toggles** per row 8 above. Hardware labels are VOLUME/PAN/SEND/DEVICE/▲/▼/◀/▶ but we override with our own meaning.
 
-**Shift:** hold for blackout momentary; modifier for alt assignments (Shift + row 7 → second par bank, etc.).
+**Shift (bottom-right):** momentary blackout-with-hold. Modifier for alt assignments.
 
-## Color language (RGB pad states)
+## QLC+ Channel formula (CRITICAL — discovered empirically 2026-05-29)
 
-| State | Color |
+```
+QLC+ Channel = MIDI_note + 128
+```
+
+So QLC+ Channel 128 = MIDI note 0, Channel 255 = MIDI note 127. For CC messages the offset differs (probably +256 or similar); we mapped only Note On so far.
+
+## APC mini mk2 MIDI map (auto-detected and confirmed on shai-hulud)
+
+| Region | MIDI note range | QLC+ Channel range | Profile labels |
+|---|---|---|---|
+| 8×8 grid pads | 0–63 | **128–191** | "Button R-C" where R=1 (bottom) → 8 (top), **C=1 (right) → 8 (left)** (columns counted from right!) |
+| Scene-launch (right col, top→bottom) | likely 111–118 | **239–246** | "Soft Keys" (top), "Clip stop", "Solo", "Mute", "Rec Arm", "Select", "Drum", "Note", "Stop All Clips" |
+| Track-select (bottom row, left→right) | 100–107 | **228–235** | "Volume", "Pan", "Send", "Device", "▲", "▼", "◀", "▶" |
+| Shift (bottom-right) | 122 or 123 | **250 or 251** | "Shift Button" |
+
+**Confirmed data points:**
+- TRK100 (my code's first track button) → Channel 229 = "Volume Button" ✓ leftmost track button
+- SHIFT button → Channel 251 = "Shift Button" ✓
+- SCN112 (my code's first scene-launch) → Channel 241 = "Clip stop Button" — this is the **second** scene-launch button. The top one ("Soft Keys") is likely note 111 = Channel 239.
+- P63 (my top-right code label) → Channel 192 = "Button 8-1" — per profile, row 8 (top), col 1 (counting from right) = top-right
+- P0 (my bottom-left code label) → Channel 129 = "Button 1-8" — row 1 (bottom), col 8 (counting from right) = bottom-left
+
+**Column orientation in profile:** Column 1 = RIGHTMOST, Column 8 = LEFTMOST. Different from my initial assumption. Doesn't break my code (the channel numbers still flow left-to-right correctly because of how the underlying notes are arranged), but worth knowing for profile label interpretation.
+
+## QLC+ Custom Feedback structure
+
+The **Custom Feedback Configuration** dialog (per VC widget) has:
+
+**Left pane — Values:**
+- **Lower Value** (0–255): MIDI velocity sent when button is in OFF state (idle).
+- **Upper Value** (0–255): velocity sent when button is in ON state (pressed/toggled active).
+- **Monitor Value** (0–255): velocity for "currently being controlled" state.
+
+**Left pane — MIDI Channel** (3 dropdowns, one per value):
+- "From plugin settings" (default)
+- "On 10% / 25% / 50% / 65% / 75% / 90% / 100% brightness"
+- "Pulsing 1/16, 1/8, 1/4, 1/2"
+- "Blinking 1/24, 1/16, 1/8, 1/4, 1/2"
+
+**Right pane — Profile color palette** (read-only, populated when input profile is bound):
+- 128 named colors at EVEN velocity values 0, 2, 4, ... 254 + value 255
+- Named palette: Off, Dark/Light Gray, White, Light/Med/Dark Red, Peach, Orange, Yellow (variants), Green (14+ variants), Cyan, Blue (13+ variants), Purple, Magenta (4+ variants), Pink, Brown, White 10/25/40/50%, Cold white, etc.
+
+**Critical:** odd velocity values are NOT valid palette entries. Setting Upper=3 produces NO light. Setting Upper=10 → red. **Always use even values from the profile table** when patching feedback.
+
+**Useful palette anchors:**
+
+| Color | Velocity |
 |---|---|
-| Active / playing | bright green solid |
-| Available, idle | dim white |
-| Selected / armed | bright blue solid |
-| Queued / next | blue pulse |
-| Dead fixture (Par 202 blue ch, Par 212 whole) | dim red |
-| Modifier engaged (Shift held) | row underglow flips amber |
-| **Group identity tint** (idle state) | warm-yellow for FT, cool-cyan for RT |
+| Off | 0 |
+| White | 6 |
+| Red | 10 |
+| Orange | 18 |
+| Yellow | 24 |
+| Light green | 40 |
+| Green | 42 |
+| Cyan/Teal | 36 |
+| Sky Blue | 80 |
+| Blue | 82 |
+| Purple | 162 |
+| Magenta | 188 |
+| Pink | 112 |
 
-The group tint means rows 5–7 read as a literal map of the rig at rest. Find a fixture in the dark.
+## Buttons need a Function attached to toggle
+
+A VC button with `<Function>No function</Function>` will not toggle state, so Upper Value feedback never fires (button stays at Lower forever). Workaround: attach a **dummy Scene** with no FixtureVal entries (Function ID 999 in APCmini-MIDI-Test.qxw, named "Feedback Dummy"). Toggle then flips state and Upper feedback fires correctly.
+
+For real busking widgets, the actual Scene/Chaser being controlled provides the toggle target naturally.
 
 ## Faders (9 total, 8 + master)
 
-| Fader | Assignment |
-|---|---|
-| 1 (master) | Grand master |
-| 2 | FT BW dim group |
-| 3 | RT BW dim group |
-| 4 | M Beam dim group |
-| 5 | Par dim group |
-| 6 | Strobe rate (when dedicated strobe scenes ever exist) |
-| 7 | Mover auto-speed (or audio-tempo override) |
-| 8 | Color CTO (warm↔cool bias across all fixtures) |
-| 9 | *spare* — likely "intensity bump amount" to tune the +15% from decision 3 live |
+| Fader | Assignment | Notes |
+|---|---|---|
+| Master (far right) | **Grand Master** | Built-in QLC+ |
+| 1 | All movers Pan offset (±64 from current) | Additive, not absolute, so releasing doesn't snap fixtures |
+| 2 | All movers Tilt offset | Same additive |
+| 3 | All movers Speed | P/T speed channel |
+| 4 | FT BW intensity group | Channel Group needed |
+| 5 | RT BW intensity group | Channel Group needed |
+| 6 | M Beam intensity group | Channel Group needed |
+| 7 | Par intensity (combined) | Channel Group needed |
+| 8 | CTO bias (warm↔cool) | Cross-fixture Channel Group, drives BW RGBW + M1 RGB + Par A/W ratios |
 
-Group dim beats per-fixture dim at 8 faders — busking needs broad strokes, not surgery. Surgery happens in the grid + Simple Desk.
+## Files created
 
-## Open items / reconciliation
+**`~/Documents/QLC+/Farmhouse-Busking-Base.qxw`** — full busking workspace with:
+- 22 FHC fixtures patched per the Hog map
+- 25 palette scenes (7 POS, 8 COL, 5 GOB, 1 INT, 4 LOOK)
+- VC layout with color-coded button rows (Pos blue / Col tinted / Gob purple / Look green)
+- ZOOM Pulse chaser on BWs (1.5s breath)
+- All BWs have Zoom=220 baked into wash-role position scenes (less-orange warm)
+- **No MIDI mappings yet** — that's the next session's work
 
-- [ ] **Pull shai-hulud's actual built workspace** and diff against this framework. The afternoon session programmed what's currently loaded; this doc is what we agreed to *next*. Where they disagree, decide whether to migrate the workspace or update this doc.
-- [ ] Confirm hardware is mk2 not mk1 (Akai shipping is mk2; reasonable assumption — verify on unbox).
-- [ ] QLC+ MIDI input profile XML for APC mini mk2 — does QLC+ ship one or do we author from scratch? (V4 has APC profiles bundled but mk2 is newer; check `~/Library/Application Support/QLC+/Input Profiles/`.)
-- [ ] Strobe-bump implementation: is it a Scene with all fixtures at +15% layered via HTP, or a Function attribute override? HTP overlay is the cleaner mental model.
-- [ ] Audio-tempo: pick the cheap interface (Behringer UCA222 = $30, or a borrowed Scarlett Solo). Map kick → BPM via a QLC+ script or a dedicated bridge (likely needs a small standalone app — falls in the [[project-ai-lighting-controller]] PoC path).
-- [ ] Lake Arrowhead workspace: separate .qxw, Rockville 384 patch, used as Temu-mover p/t bench. Build when first needed.
-- [ ] Verify QLC+ V4.14 stores MIDI mappings inside the .qxw (so per-venue files carry their own bindings) vs. globally. If global, document how to swap between venues cleanly.
+**`~/Documents/QLC+/APCmini-MIDI-Test.qxw`** — standalone controller test workspace:
+- No fixtures, no DMX
+- 2 universes (U1 reserved, U2 = APC mini input/feedback)
+- 81 VC buttons: 8×8 grid (Channels 129–192) + 8 scene-launch (Channels 241–248 — note top button may be 239 not 241) + 8 track-select (Channels 229–236) + 1 Shift (Channel 251)
+- Each button has HSV-cycled BackgroundColor for rainbow rendering
+- Dummy Scene "Feedback Dummy" (Function ID 999) attached to every button
+- **Outstanding:** Custom Feedback Upper/Monitor values not yet bulk-patched per button. Manual test with Upper=10 → red pad works after profile is assigned.
 
-## Why this won't survive contact with shai-hulud's version unchanged
+## QLC+ I/O setup (verified working)
 
-The afternoon shai-hulud session built the actual working surface. This doc is a design framework reached without seeing what's already wired. Expect to revise rows 5–7 (groups + individual fixtures) and bottom-row assignments after diffing. The decisions in the "locked 2026-05-27" section above are paradigm-level and *should* survive; the specific button-to-function map is provisional.
+- **Universe 2** dedicated to APC mini control surface
+- Universe 2 → **Input ✓**, **Output ✗**, **Feedback ✓**
+- Profile tab → **"Akai APC Mini mk2"** assigned to Universe 2
+- Universe 1 (separate) → reserved for ENTTEC DMX output to fixtures
+
+Separates control-surface MIDI from DMX traffic cleanly. Standard pattern for any QLC+ rig with both.
+
+## Outstanding for next session
+
+- [ ] **Verify scene-launch top button channel** — press the topmost right-column pad ("Soft Keys") and confirm Channel. Likely 239 (note 111), making the full scene-launch range 111–118 = Channels 239–246. If so, my patch missed by 1 and the bottom scene-launch button has no binding.
+- [ ] **Bulk-patch Custom Feedback** — write Python that sets each VC button's Lower Value (off state, e.g., dim white = 1 or off = 0) and Upper Value (on state) to palette indices matching the button's BackgroundColor. **First step:** have Jefe manually configure one button with Custom Feedback in the UI, save the .qxw, then I read the file to see how QLC+ serializes the feedback XML (probably as `<Feedback>` children inside `<Input>`). Then write the bulk patch.
+- [ ] **Add Channel Groups** for fader assignments (FT BW dim, RT BW dim, M Beam dim, Par dim, CTO bias).
+- [ ] **Wire faders 1-8** to their assignments via External Input on VC Slider widgets.
+- [ ] **Author the 8 universal mood looks** in Farmhouse-Busking-Base.qxw (currently has 4 placeholder LOOK scenes; replace with the 8 song-arc moods).
+- [ ] **Strobe-bump scene** — HTP overlay scene that adds +15% intensity to all fixtures, mapped to a momentary VC button with Flash action.
+- [ ] **Audio-trigger setup** — defer until after one gig with the mk2.
+- [ ] **Reconcile** — the APCmini-MIDI-Test.qxw proved the protocol; now apply the working MIDI mappings + Custom Feedback to Farmhouse-Busking-Base.qxw.
+
+## Lessons learned (carry forward)
+
+- **Always plug in the controller BEFORE launching QLC+** so the OS detects it cleanly and QLC+ enumerates it on startup.
+- **Assign the Input Profile FIRST** before doing any feedback work. Without it, the palette table is empty and Custom Feedback fails silently.
+- **Use Auto Detect for the first button of each region** to discover the QLC+ Channel offset, then derive the rest mathematically. The +128 offset on Note messages is universal in QLC+.
+- **Attach a dummy Function** to test buttons that don't drive any real Scene. Toggle action needs SOMETHING to toggle.
+- **mk2 palette uses EVEN velocity values only** (0, 2, 4, ... 254 + 255). Odd values produce no light. Read the profile palette table for valid values.
+- **Side buttons (mk2 scene-launch + track-select)** are RGB on the mk2 (were single-color on mk1). Worth using the colors.
+- **macOS doesn't need a driver** for the mk2 — class-compliant MIDI USB.
+- **Column orientation in QLC+ profile labels** counts from right (Col 1 = rightmost). Doesn't affect channel arithmetic but matters for interpreting "Button R-C" labels.
