@@ -10,6 +10,8 @@ video archives before the building closes. Proof-of-concept site visit
 Monday week of 2026-05-12 (public areas only). Full-building return
 planned before end of June, contingent on access.
 
+**Clip→room index:** [[Bekins Hall 360 Room Map]] — all 196 clips mapped to rooms (2026-05-18 capture).
+
 **Working docs in /Volumes/Stilgar/Sync/Documents/ClaudeCode/:**
 - `bekins-hall-vr-project.md` — internal strategy, not for sharing
 - `bekins-monday-plan.md` — public-facing site visit plan
