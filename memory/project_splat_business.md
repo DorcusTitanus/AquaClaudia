@@ -59,6 +59,22 @@ architecturally slow to pivot.
   platforms
 - Apple invested: SHARP model, LGTM research, visionOS 26 spatial
 
+**Licensing (commercial-critical — verified 2026-06-06):**
+- **The trap:** the original **Inria 3D Gaussian Splatting** reference code
+  is *non-commercial research only*; commercial use needs a paid Inria
+  license. Most splat products walk into this.
+- **The clean path:** **Brush** (Apache-2.0, derived from Google Research's
+  brush_splat, NOT Inria) and **msplat** (Metal) both sidestep it. Train via
+  these, never via Inria-derived code.
+- Component licenses: COLMAP/Glomap = BSD ✅, SuperSplat (PlayCanvas) = MIT ✅,
+  Nerfstudio = Apache ✅. **Upscayl = AGPL-3.0 ⚠️** — copyleft landmine, do
+  NOT bundle in a shipped product (it's only an optional upscale step).
+- **CorbeauSplat** (freddewitt) is **MIT** and an all-in-one macOS-Silicon
+  pipeline (360-extractor → COLMAP/Glomap → Brush → SuperSplat). Use it as a
+  **reference implementation + validation harness**, not a bundled dependency
+  (wholesale-wrapping it inherits its whole dep tree incl. AGPL upscaler). Its
+  MIT 360-extractor approach is worth reading for our own equirect→cubemap.
+
 **Product vision:** "iMovie for Gaussian splats." Plug Insta360, drag
 clips into rooms, hit splat button. Output: web tour + Vision Pro
 bundle + PLY. User never sees COLMAP or gsplat parameters.
