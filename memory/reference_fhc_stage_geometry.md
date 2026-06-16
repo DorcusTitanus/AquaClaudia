@@ -112,14 +112,14 @@ Related: [[project-dmx-lighting]] (rig patch + venue context), [[project-ai-ligh
 | Distance from back wall | 7.367 m |
 | Post-to-post span | 12.178 m |
 | Ground → joist holder | 5.932 m |
-| Stage deck → FT bottom | 4.318 m |
+| Stage deck → FT bottom | **4.97 m** ⚠️ CORRECTED 2026-06-12 (grade→FT-bottom = 5.513 m direct laser; old 4.318 was wrong by ~0.65 m — derived/mis-referenced) |
 | Tube diameter | 2 in (confirm both trusses match) |
 
 ### Rear Truss (RT)
 | Dimension | Value |
 |---|---|
 | Distance from back wall | 3.426 m |
-| Stage deck → RT bottom | 3.921 m |
+| Stage deck → RT bottom | 3.921 m (✓ confirmed 3.915 m on 2026-06-12) |
 
 **Truss separation (calc):** 7.367 − 3.426 = **3.941 m**
 
