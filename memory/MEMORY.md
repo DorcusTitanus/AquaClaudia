@@ -209,6 +209,7 @@ For full work-log detail on the course build see [multi-211-canvas-build.md](mul
 
 ## Project Briefs (public-safe)
 
+- [project_sac_health_set2026.md](project_sac_health_set2026.md) — **Active client (through ~Aug 22, 2026)** SAC Health "SET 2026: Growth Takes Flight" — org-wide OKR strategy launch, 800+ employees, Jeff as ID & tech lead for Track B. Launch July 29, 2026.
 - [project_wilsonidt_plugin.md](project_wilsonidt_plugin.md) — Main software project: FastAPI + Canvas + UXP Photoshop plugin (extended detail beyond the inline summary above)
 - [project_imscc_builds.md](project_imscc_builds.md) — Weekly IMSCC cartridge build workflow: locations, structure, build pattern
 - [project_canvas_sandbox_vs_live.md](project_canvas_sandbox_vs_live.md) — Sandbox/live separation; no PII in API access
