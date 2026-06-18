@@ -76,6 +76,44 @@ So QLC+ Channel 128 = MIDI note 0, Channel 255 = MIDI note 127. For CC messages 
 
 **Column orientation in profile:** Column 1 = RIGHTMOST, Column 8 = LEFTMOST. Different from my initial assumption. Doesn't break my code (the channel numbers still flow left-to-right correctly because of how the underlying notes are arranged), but worth knowing for profile label interpretation.
 
+## MIDI VERIFIED LIVE (2026-06-18, direct CoreMIDI sniff on M5)
+
+Sniffed the actual hardware with a tiny Swift CoreMIDI listener (`FHC_lightRig/midimon.swift`,
+`swiftc -o midimon midimon.swift; ./midimon <seconds>` — logs port-tagged decoded MIDI to
+`/tmp/midi.log`; multiple clients can read a CoreMIDI source, so it works even with QLC+ open).
+This SUPERSEDES guesses above where they conflict.
+
+- **Two ports exposed:** `APC mini mk2 Control` and `APC mini mk2 Notes`.
+  **In Session mode (our busking mode) EVERYTHING rides on the `Control` port, MIDI ch1** —
+  grid, Shift, scene-launch, track row, AND faders. The `Notes` port is unused in Session mode
+  (it's for the musical Note mode). **→ Wire QLC+ to the single `Control` input line.**
+- **Confirmed note/CC map (ch1, Control port):**
+  - 8×8 grid pads = **notes 0–63** (top-left = 56, bottom-right = 7) → QLC+ ch 128–191 (note+128 ✓)
+  - Scene-launch (right col, top→bottom) = **notes 112–119** → QLC+ ch 240–247
+  - Track row (bottom, L→R) = **notes 100–107** → QLC+ ch 228–235
+  - **Shift = note 122** → QLC+ ch 250
+  - **Faders 1–8 = CC 48–55** (master fader presumably CC 56), all ch1
+- **SHIFT IS A CLEAN, BINDABLE NOTE (note 122, momentary NoteOn/NoteOff).** Earlier worry that
+  Shift can't be used for paging is WRONG for this firmware/port — a plain Shift tap sends only
+  note 122 with no side effects. **→ Page via Shift → "Next Page" on a multipage VC frame**, which
+  keeps the clean 0–63 grid identical on every page. (SysEx only fires when Shift is HELD to change
+  pad modes.)
+- **Drum mode = MIDI channel 10** (not ch7 as a doc claimed): same pads, ch10, remapped notes
+  (e.g. 120/71). QLC+ sees ch1 vs ch10 as different inputs → a free second 64-pad layer, toggled
+  on-device. Kept as a FALLBACK; Shift-paging is cleaner (Drum mode scrambles the note layout).
+
+## QLC+ VC widget XML schemas (status 2026-06-18)
+
+- **Level slider channels (confident, from the live .qxw):** `<Level LowLimit="0" HighLimit="255"
+  Value="0"><Channel Fixture="ID">chIndex</Channel>...</Level>` — channel index is element TEXT,
+  fixture ID is the `Fixture` attr. (NOTE: QLC+ source-via-LLM mis-reported the attrs as
+  `LevelLowLimit` etc. — the real serialized names are `LowLimit/HighLimit/Value`. Trust the live
+  file, not the summary.)
+- **Multipage frame / Solo frame / Speed Dial:** NOT yet verified against a real save. LLM
+  reconstruction of the source was unreliable (wrong serialized names). Before authoring these into
+  the show file, get one real example of each from the QLC+ UI (create + save), then read it back —
+  the proven pattern that has never broken the file.
+
 ## QLC+ Custom Feedback structure
 
 The **Custom Feedback Configuration** dialog (per VC widget) has:
