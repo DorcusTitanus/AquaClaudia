@@ -140,13 +140,19 @@ Rig has **2 trusses**, not 3+3. There is NO "Back Truss":
 
 | Position | Aim US (band) | Aim Grass (audience) | Aim DS (front light) |
 |---|---|---|---|
-| RT SL | — | — | Par 201 |
-| RT Center | Par 203, 204 | — | Par 202 *(dead blue LED)* |
+| RT SL | — | — | Par 201 (DS/audience) |
+| RT Center | Par 204 ⚠ (the 1 US/band par) | — | Par 202 *(dead blue, DS)*, Par 203 ⚠ (DS) |
 | FT SR (far) | Par 205 | — | — |
 | FT 2nd from SR | Par 208, 209 | Par 206 | — |
 | FT 2nd from SL | — | Par 210 | — |
 | FT SL (far) | Par 211 | Par 212 *(dead)* | — |
 | FT (location TBD — likely center span) | — | Par 207 | — |
+
+**RT PARS CORRECTED 2026-06-19 (Jefe, at venue) — supersedes the old "203/204 both US" map.**
+The RT truss has **3 pars pointed DS (at the audience) and 1 pointed US (at the band).**
+Confirmed on site: **DMX 181 = Par 201 (RT-SL, DS); DMX 190 = Par 202 (RT-Center, DS, dead blue).**
+So **3 DS = 201 + 202 + one of {203,204}; the remaining one of {203,204} is the lone US par.**
+⚠ Which of 203/204 is US vs DS is NOT yet confirmed — placed as 203=DS, 204=US, swap on site.
 
 Working pars: 11. Dead: Par 202 (blue LED) and Par 212 (whole fixture).
 
