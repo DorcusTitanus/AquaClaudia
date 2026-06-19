@@ -99,8 +99,59 @@ This SUPERSEDES guesses above where they conflict.
   keeps the clean 0–63 grid identical on every page. (SysEx only fires when Shift is HELD to change
   pad modes.)
 - **Drum mode = MIDI channel 10** (not ch7 as a doc claimed): same pads, ch10, remapped notes
-  (e.g. 120/71). QLC+ sees ch1 vs ch10 as different inputs → a free second 64-pad layer, toggled
-  on-device. Kept as a FALLBACK; Shift-paging is cleaner (Drum mode scrambles the note layout).
+  (mk2 Drum is a 4-quadrant Ableton drum-rack layout, notes 36–99, per the mk2 manual).
+
+### DRUM-MODE PAGE-2 = DEAD END (2026-06-19, do NOT re-attempt at a gig)
+Spent a whole venue session trying to use Drum mode (ch10) as a second 64-pad layer so page 2
+would work on the controller. It does NOT work with QLC+ + this controller, for layered reasons:
+- **QLC+'s bundled "Akai APC Mini mk2" input profile only maps the Session-mode (ch1) pads.** It has
+  no entries for Drum/Note-mode pads, so QLC+ never recognizes those presses (auto-detect sees
+  nothing; only Shift, which IS in the profile, registers).
+- **The MIDI plugin input is filtered to MIDI Channel = 1**, so ch10 (Drum) is dropped regardless.
+- **The Init Message was set to the mk1 ("APC mini Ableton mode 2")**, not "APC mini mk2 Ableton
+  mode 2". Fixing it + relaunch did NOT help.
+- The profile **wizard** would not capture Drum/Note pads either.
+- Even when channels were forced, a deeper killer remains: **QLC+ multipage delivers a shared input
+  channel to only ONE widget**, so page-1 and page-2 buttons can't share the same pad note anyway —
+  AND the page-flip-must-track-pad-mode sync is too fragile to trust live.
+**Resolution (ship this):** page 1 = full pad-driven grid; **page 2 = MOUSE-ONLY long tail**; put the
+handful of must-trigger page-2 functions on the **16 side pads** (scene-launch ch240–247 + track
+ch228–235 — unique channels, always live, no mode switching). That's the reliable busking surface.
+
+## FHC BUSKING VC — gig-ready (`~/Documents/QLC+/Farmhouse-Busking-mk2.qxw`, 2026-06-19)
+
+Built the real Session-mode VC this session. Generators: `build_mk2_vc.py` (+ earlier
+`build_busking_vc.py`). State:
+- **8×8 grid, 2 pages** in a multipage Frame; **Shift (ch250) flips pages** (Previous + PagesLoop).
+  Page 1 = performance (specials/M1 colors/M1 pos/M1 beam/BW colors/BW pos/par colors/EFX). Page 2 =
+  detail (mouse-only — see dead-end above).
+- **9 faders wired** (L→R): M1 int · FT BW int · RT BW int · FT-Pars int · BW zoom · BW ring-macro
+  (ch9 select) · BW ring-speed (ch10) · **EFX-speed Speed Dial (CC55, range 30s→0.5s)** · Master.
+- **Speed Dial** drives ALL 5 EFX (multiple `<Function>` children); AbsoluteValue input on the fader.
+- 4 par **chases** built (Chaser + step-scenes): Red/Green base + white runner, White base + red/green
+  runner, over audience pars, dead-212 as a gap.
+
+### Hard-won rig/QLC+ fixes from this session (all real, all verified on the rig)
+- **BW intensity faders must drive BOTH ring dimmer (ch14) AND center dimmer (ch16).** The visible
+  "wash" is the RING; center-only (ch16) barely registers — symptom was "only RT-SL lights" until we
+  diffed a working dump and found ch14=0 vs 255. Faders 2/3 now own ch14+ch16.
+- **Shutter open = 255 for M1 (ch9) and ~22 for BW (ch18/19).** Rig opens M1 at 5 but BlenderDMX only
+  renders open at 216+; 255 opens BOTH. Additive color scenes now open the shutter themselves so a
+  color button + intensity fader = light, no base scene needed.
+- **Blackout: use the "Toggle Blackout" button ACTION, not a dimmers-to-0 scene.** Level faders hold
+  the dimmers up, so a scene can't pull them down. (Same reason any all-dimmers-0 scene won't black.)
+- **Par aim IDs confirmed at venue:** DMX 181 = Par 201 (RT-SL, aims DS/audience); DMX 190 = Par 202
+  (RT-Center, DS, dead blue LED). Audience-facing set = 201,202,+one of 203/204 (RT) + 206,207,210
+  (FT DS) + dead 212. RT-Center has only 2 pars; 3rd RT-DS par (203 or 204) still to confirm on site.
+- Sniffer tool: `FHC_lightRig/midimon.swift` (CoreMIDI, port-tagged) — reusable for any controller.
+
+### ROADMAP (next QLC+ sessions, per Jefe 2026-06-19)
+- Move the 4 chases to **page 1** (they read well).
+- Top row → real **base looks with descriptions** (full scenes: color theory + light positions).
+- Use **front BW positions to make spotlight specials** (their tight focus is the point).
+- **Complex moving EFX**: shutter blacks out part of the motion → reads as a *sweep*; fan the FT BW
+  out at the audience with a **color chase stacked on top**.
+- **Gobos + prisms (M1) can't be previz'd in Blender** — dial those in at a **night venue session**.
 
 ## QLC+ VC widget XML schemas (status 2026-06-18)
 
