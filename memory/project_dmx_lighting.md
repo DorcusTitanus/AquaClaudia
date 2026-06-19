@@ -153,6 +153,9 @@ The RT truss has **3 pars pointed DS (at the audience) and 1 pointed US (at the 
 Confirmed on site: **DMX 181 = Par 201 (RT-SL, DS); DMX 190 = Par 202 (RT-Center, DS, dead blue).**
 So **3 DS = 201 + 202 + one of {203,204}; the remaining one of {203,204} is the lone US par.**
 ⚠ Which of 203/204 is US vs DS is NOT yet confirmed — placed as 203=DS, 204=US, swap on site.
+**Mount X (Jefe on site 2026-06-19):** 201 sits between M1-SL & BW-SL (RT-SL); 202 between the two
+center M1s; 203 between M1-SR & BW-SR (RT-**SR**, not center); 204 ≈ same X as 202 but aimed US.
+(In the Blender model these are computed as midpoints of those neighbor fixtures — see place_pars.py.)
 
 Working pars: 11. Dead: Par 202 (blue LED) and Par 212 (whole fixture).
 
