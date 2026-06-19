@@ -157,6 +157,14 @@ So **3 DS = 201 + 202 + one of {203,204}; the remaining one of {203,204} is the 
 center M1s; 203 between M1-SR & BW-SR (RT-**SR**, not center); 204 ≈ same X as 202 but aimed US.
 (In the Blender model these are computed as midpoints of those neighbor fixtures — see place_pars.py.)
 
+**FT PARS = 4 US/DS PAIRS (Jefe on site 2026-06-19):** every FT X position holds TWO pars —
+one aiming US/band, its partner aiming DS/audience (same X, opposite truss chords):
+- **Pair A:** 211 (US) + 212 (DS, dead) — centered between BW-SL (303=31) and BW-SL-center (305=91).
+- **Pair B:** 209 (US) + 210 (DS) — between the two center BWs (305=91 & 304=61), SL side.
+- **Pair C:** 208 (US) + 207 (DS) — between the two center BWs, SR side (~2 instrument-widths from B).
+- **Pair D:** 205 (US) + 206 (DS) — centered between BW-SR-center (304=61) and BW-SR (306=121).
+US = 205,208,209,211; DS/audience = 206,207,210,212-dead. (Supersedes the looser FT rows above.)
+
 Working pars: 11. Dead: Par 202 (blue LED) and Par 212 (whole fixture).
 
 ### Patch order is NOT physical order
