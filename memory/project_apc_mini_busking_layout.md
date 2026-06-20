@@ -145,13 +145,29 @@ Built the real Session-mode VC this session. Generators: `build_mk2_vc.py` (+ ea
   (FT DS) + dead 212. RT-Center has only 2 pars; 3rd RT-DS par (203 or 204) still to confirm on site.
 - Sniffer tool: `FHC_lightRig/midimon.swift` (CoreMIDI, port-tagged) — reusable for any controller.
 
-### ROADMAP (next QLC+ sessions, per Jefe 2026-06-19)
-- Move the 4 chases to **page 1** (they read well).
-- Top row → real **base looks with descriptions** (full scenes: color theory + light positions).
-- Use **front BW positions to make spotlight specials** (their tight focus is the point).
-- **Complex moving EFX**: shutter blacks out part of the motion → reads as a *sweep*; fan the FT BW
-  out at the audience with a **color chase stacked on top**.
-- **Gobos + prisms (M1) can't be previz'd in Blender** — dial those in at a **night venue session**.
+### PAR COLOR-CHASE ROW BUILT (page-1 row 7, 2026-06-19) — additive color theory
+Row 7 = `Red · Green · Blue · Red Chase · Grn Chase · Inverted(=White Chase) · Band WWht · Tap`.
+Functions are IDs 1300–1342 in `Farmhouse-Busking-mk2.qxw`. The model:
+- **Color buttons** (1300/1301/1302) set dim+color on the 7 audience/chase pars (201,202,203,206,207,210,212).
+  Additive/HTP → Red+Green = yellow field. (Band pars have their own **Band Warm Wht** button, 1303.)
+- **Red/Green Chase** (1340/1341): a single par steps through with dim+that color → an **additive secondary**
+  on whatever base is latched (green runner on red base = yellow dot; same color = invisible). Latch TWO and
+  run them staggered for layered looks — the whole point of building it additive.
+- **Inverted (1342)** = self-contained **white** moving spotlight (one par lit, rest dark, rotating). It can't
+  carry the latched color — HTP can't pull pars below a latched dimmer — so it's white-only; Jefe renamed it
+  "White Chase" and is fine with that.
+- **Tap-tempo:** a "Chase Tap" Speed Dial (common-speed) rides all 3 chasers; its Tap is on row-7 col-8 (ch143).
+  *Unverified:* whether QLC+'s common-speed + tap actually scales the chasers live — test next session.
+
+### ROADMAP (next QLC+ sessions — Jefe will run a show, take notes, then iterate)
+- **Page-1 buttons need work** — running a real show first to see what actually needs changing.
+- **Positional specials (~half the top row) as set looks:** spotlight the lead singer; "all movers on the
+  drummer" (the **Upstage** scene already does most of that — just add beam FX + a color chase to it).
+- **Color chases for every mover GROUP** (FT BW / RT BW / M1 in / M1 out / etc.) — probably **page-2 material**.
+- Top row → **base looks with descriptions** (full scenes: color theory + positions).
+- **Shutter-sweep EFX**: shutter blacks out part of the motion → reads as a sweep; fan FT BW at the audience
+  with a color chase stacked on top.
+- **Gobos + prisms (M1)** can't be previz'd in Blender — dial at a **night venue session**.
 
 ## QLC+ VC widget XML schemas (status 2026-06-18)
 

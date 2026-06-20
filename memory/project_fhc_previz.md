@@ -19,6 +19,22 @@ Related: [[reference-fhc-stage-geometry]] (laser measurements = ground truth), [
 
 ---
 
+## ✅ BLENDER RIG COMPLETE (2026-06-19, Jefe)
+
+All 22 fixtures are placed and aimed in `FHC_Stage.blend`: 4 M1 Beams + 6 BeamWashes (done earlier)
+**+ all 12 COLORdash Par-H7X** added this session. The rig is done — next work is QLC+ looks, not the model.
+- **Par GDTF:** `~/Downloads/Chauvet_Professional@COLORdash_PAR_H7X@Beta_1.0.1.gdtf` (also copied into the
+  BlenderDMX profiles folder). **Add pars in 9Ch mode** — the GDTF importer defaults to `dmx_modes[0]`=6Ch,
+  which scrambles the channel map vs QLC+. So add via the BlenderDMX panel (9Ch), don't rely on the importer.
+- **Placement script:** `FHC_lightRig/place_pars.py` — matches pars by DMX address and positions them.
+  Robust by design: reads truss **height** off the existing BW/M1 fixtures (no stale Z), reads RT par **X**
+  as the midpoint of the neighbor fixtures each sits between, lays FT pars as **US/DS pairs** centered between
+  named BWs, and **fans the DS/grass pars** across the grass via look-at (`DS_TARGET_X`). Re-runnable.
+- Par layout truths are in [[project-dmx-lighting]] (RT = 3 DS + 1 US; FT = 4 US/DS pairs).
+- Still BlenderDMX-only limits: **gobos, prisms, ring macros don't render** — those get dialed at a night venue.
+
+---
+
 ## Files
 
 - **Blender model:** `/Volumes/Stilgar/Sync/Documents/ClaudeCode/FHC_lightRig/FHC_Stage.blend` (+ `.blend1` backup). Blender 5.1.2.
