@@ -129,3 +129,9 @@ Track B range: $18,300–$28,500 | Track A: $10,800 | Combined before discount: 
 | Dave Strausberger | EDL production lead, Track A | Event Design Lab |
 | Jeff Wilson | ID & technology lead, Track B | Event Design Lab |
 | SAC Health IT | Technical coordination | Not yet provided — needed ASAP |
+
+---
+
+## Progress Log
+
+- **2026-06-23** — Brand assets received from SAC (brand guide, logos, fonts, People Success palette, Brier Room panel sample) — the July 7 dependency, arrived early. Brier Room measured on-site and modeled in Blender via a parametric blockout script. A self-contained Three.js first-person walkthrough was built and **deployed live at https://wilsonidt.com/brier/** — it opens at an authored camera position facing the Welcome panel; three.js is vendored locally (no CDN). Detailed room geometry + the full brand spec are held in local project memory on Stilgar (not mirrored here).
